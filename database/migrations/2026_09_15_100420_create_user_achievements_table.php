@@ -10,18 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('user_achievements', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('user_achievements', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        $table->string('achievement_code');
+        $table->foreign('achievement_code')->references('code')->on('achievements')->cascadeOnDelete();
+        $table->timestamp('earned_at')->useCurrent();
+        $table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('user_achievements');
-    }
+        $table->unique(['user_id', 'achievement_code']);
+    });
+}
+
+public function down(): void
+{
+    Schema::dropIfExists('user_achievements');
+}
 };

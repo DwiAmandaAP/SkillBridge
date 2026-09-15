@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('learning_resources', function (Blueprint $table) {
+    Schema::create('career_skills', function (Blueprint $table) {
         $table->id();
+        $table->foreignId('career_id')->constrained()->cascadeOnDelete();
         $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
-        $table->string('title');
-        $table->string('provider')->nullable();
-        $table->string('type')->nullable(); // video/article/course, dll
-        $table->string('url');
+        $table->unsignedTinyInteger('required_level');
+        $table->string('importance'); // e.g. critical / important / optional
         $table->timestamps();
+
+        $table->unique(['career_id', 'skill_id']);
     });
 }
 
 public function down(): void
 {
-    Schema::dropIfExists('learning_resources');
+    Schema::dropIfExists('career_skill');
 }
 };

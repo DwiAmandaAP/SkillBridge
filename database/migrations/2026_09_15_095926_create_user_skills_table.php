@@ -10,18 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('user_skills', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('user_skills', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
+        $table->unsignedTinyInteger('level')->default(0);
+        $table->unsignedTinyInteger('confidence')->nullable();
+        $table->enum('source', ['self', 'scenario', 'github'])->default('self');
+        $table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('user_skills');
-    }
+        $table->unique(['user_id', 'skill_id']);
+    });
+}
+
+public function down(): void
+{
+    Schema::dropIfExists('user_skills');
+}
 };

@@ -10,18 +10,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('scoring_settings', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('scoring_settings', function (Blueprint $table) {
+        $table->id();
+        $table->decimal('technical_weight', 3, 2);
+        $table->decimal('soft_weight', 3, 2);
+        $table->decimal('portfolio_weight', 3, 2);
+        $table->decimal('experience_weight', 3, 2);
+        $table->decimal('assessment_weight', 3, 2);
+        $table->timestamps();
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('scoring_settings');
-    }
+public function down(): void
+{
+    Schema::dropIfExists('scoring_settings');
+}
 };

@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('skills', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    Schema::create('skills', function (Blueprint $table) {
+        $table->id();
+        $table->string('code')->unique();
+        $table->string('name');
+        $table->enum('category', ['technical', 'soft']);
+        $table->timestamps();
+    });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('skills');

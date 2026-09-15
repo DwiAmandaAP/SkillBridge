@@ -10,18 +10,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('industry_insights', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('industry_insights', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('skill_id')->unique()->constrained()->cascadeOnDelete();
+        $table->unsignedTinyInteger('demand');
+        $table->string('trend'); // e.g. up / down / stable
+        $table->unsignedInteger('job_sample_size')->default(0);
+        $table->string('period')->nullable();
+        $table->timestamps();
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('industry_insights');
-    }
+public function down(): void
+{
+    Schema::dropIfExists('industry_insights');
+}
 };

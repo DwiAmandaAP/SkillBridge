@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('assessment_history', function (Blueprint $table) {
+    Schema::create('portfolio_checklist_items', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-        $table->unsignedTinyInteger('score');
-        $table->timestamp('taken_at')->useCurrent();
+        $table->string('code')->unique();
+        $table->string('category');
+        $table->string('label');
         $table->timestamps();
     });
 }
 
 public function down(): void
 {
-    Schema::dropIfExists('assessment_history');
+    Schema::dropIfExists('portfolio_checklist_items');
 }
 };

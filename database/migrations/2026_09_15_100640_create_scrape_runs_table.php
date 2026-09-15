@@ -10,18 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('scrape_runs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('scrape_runs', function (Blueprint $table) {
+        $table->id();
+        $table->timestamp('started_at');
+        $table->timestamp('finished_at')->nullable();
+        $table->enum('status', ['success', 'partial', 'failed']);
+        $table->unsignedInteger('jobs_found')->default(0);
+        $table->unsignedInteger('jobs_processed')->default(0);
+        $table->text('error_message')->nullable();
+        $table->timestamps();
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('scrape_runs');
-    }
+public function down(): void
+{
+    Schema::dropIfExists('scrape_runs');
+}
 };
