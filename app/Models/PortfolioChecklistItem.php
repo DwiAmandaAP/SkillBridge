@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PortfolioChecklistItem extends Model
 {
-    use HasFactory;
+    protected $fillable = ['code', 'category', 'label'];
+
+    public function userProgress()
+    {
+        return $this->hasMany(UserPortfolioProgress::class, 'checklist_item_id');
+    }
 }

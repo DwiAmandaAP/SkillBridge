@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ScoringSetting extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'technical_weight', 'soft_weight', 'portfolio_weight',
+        'experience_weight', 'assessment_weight',
+    ];
+
+    // Singleton helper
+    public static function current(): self
+    {
+        return static::firstOrFail();
+    }
 }
