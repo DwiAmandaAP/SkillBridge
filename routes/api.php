@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AnalyticsController;
-use App\Http\Controllers\Admin\CareerController;
+use App\Http\Controllers\Admin\CareerController as AdminCareerController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryInsightController;
 use App\Http\Controllers\Admin\LearningResourceController;
@@ -11,6 +13,10 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserSkillController;
+use App\Http\Controllers\SkillGapController;
+use App\Http\Controllers\ReadinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +28,27 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+// Rute API Auth
+Route::prefix('v1')->group(function () {
+    Route::post('auth/register', [AuthController::class, 'register']);
+    Route::post('auth/login', [AuthController::class, 'login']);
+
+    // Career (public)
+    Route::get('careers', [CareerController::class, 'index']);
+    Route::get('careers/{slug}', [CareerController::class, 'show']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('auth/logout', [AuthController::class, 'logout']);
+        Route::get('me', [AuthController::class, 'me']);
+        Route::patch('me', [AuthController::class, 'updateProfile']);
+        
+        Route::get('me/skills', [UserSkillController::class, 'index']);
+        Route::post('me/skills', [UserSkillController::class, 'store']);
+        Route::post('onboarding', [OnboardingController::class, 'store']);
+        Route::get('skill-gap', [SkillGapController::class, 'index']);
+        Route::get('readiness-score', [ReadinessController::class, 'index']);
+    });
+});
 
 // Rute API Admin
 Route::prefix('v1/admin')
@@ -30,10 +57,10 @@ Route::prefix('v1/admin')
 
         Route::get('dashboard', [DashboardController::class, 'index']);
 
-        Route::get('careers', [CareerController::class, 'index']);
-        Route::post('careers', [CareerController::class, 'store']);
-        Route::patch('careers/{career}', [CareerController::class, 'update']);
-        Route::delete('careers/{career}', [CareerController::class, 'destroy']);
+        Route::get('careers', [AdminCareerController::class, 'index']);
+        Route::post('careers', [AdminCareerController::class, 'store']);
+        Route::patch('careers/{career}', [AdminCareerController::class, 'update']);
+        Route::delete('careers/{career}', [AdminCareerController::class, 'destroy']);
 
         Route::get('skills', [SkillController::class, 'index']);
         Route::post('skills', [SkillController::class, 'store']);

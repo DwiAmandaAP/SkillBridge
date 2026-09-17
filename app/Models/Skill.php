@@ -10,7 +10,7 @@ class Skill extends Model
 
     public function careers()
     {
-        return $this->belongsToMany(Career::class, 'career_skill')
+        return $this->belongsToMany(Career::class, 'career_skills')
             ->withPivot(['required_level', 'importance'])
             ->withTimestamps();
     }
