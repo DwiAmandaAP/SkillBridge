@@ -17,7 +17,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserSkillController;
 use App\Http\Controllers\SkillGapController;
 use App\Http\Controllers\ReadinessController;
-
+use App\Http\Controllers\RoadmapController;
+use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\IndustryInsightController as UserIndustryInsightController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -47,6 +51,19 @@ Route::prefix('v1')->group(function () {
         Route::post('onboarding', [OnboardingController::class, 'store']);
         Route::get('skill-gap', [SkillGapController::class, 'index']);
         Route::get('readiness-score', [ReadinessController::class, 'index']);
+        Route::get('assessment/questions', [AssessmentController::class, 'questions']);
+        Route::post('assessment/submit', [AssessmentController::class, 'submit']);
+        Route::post('roadmap/generate', [RoadmapController::class, 'generate']);
+        Route::get('roadmap', [RoadmapController::class, 'index']);
+        Route::patch('roadmap/phases/{id}', [RoadmapController::class, 'updatePhase']);
+        Route::get('portfolio', [PortfolioController::class, 'index']);
+        Route::patch('portfolio/checklist/{item_code}', [PortfolioController::class, 'updateChecklist']);
+        Route::get('portfolio/certificates', [CertificateController::class, 'index']);
+        Route::post('portfolio/certificates', [CertificateController::class, 'store']);
+        Route::delete('portfolio/certificates/{id}', [CertificateController::class, 'destroy']);
+        Route::post('portfolio/github-analyze', [PortfolioController::class, 'githubAnalyze']);
+
+        Route::get('industry-insights', [UserIndustryInsightController::class, 'index']);
     });
 });
 
