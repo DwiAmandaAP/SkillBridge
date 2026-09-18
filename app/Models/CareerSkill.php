@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CareerSkill extends Model
 {
-    protected $table = 'career_skill';
+    protected $table = 'career_skills';
 
     protected $fillable = ['career_id', 'skill_id', 'required_level', 'importance'];
 

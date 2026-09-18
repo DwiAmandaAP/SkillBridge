@@ -2,42 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\IndustryInsight;
-use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class IndustryInsightController extends Controller
 {
-    use ApiResponse;
-
-    public function index()
+    public function index(Request $request)
     {
-        return $this->success(
-            IndustryInsight::select('skill_id', 'demand', 'trend', 'job_sample_size', 'period')->get()
-        );
+        $insights = IndustryInsight::with('skill')
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'OK',
+            'data' => $insights,
+        ], 200);
     }
 
-    // Dipakai baik untuk create maupun update manual (unique per skill_id).
-    // Hanya relevan saat app_settings.industry_insight_mode = 'manual'.
-    public function store(Request $request)
+    public function trend($skill_id)
     {
-        $validated = $request->validate([
-            'skill_id' => 'required|exists:skills,id',
-            'demand' => 'required|integer|min:0|max:100',
-            'trend' => 'required|string',
-            'job_sample_size' => 'nullable|integer|min:0',
-            'period' => 'nullable|string',
-        ]);
+        $insights = IndustryInsight::where('skill_id', $skill_id)
+            ->orderBy('period')
+            ->get();
 
-        $insight = IndustryInsight::updateOrCreate(
-            ['skill_id' => $validated['skill_id']],
-            collect($validated)->except('skill_id')->toArray()
-        );
-
-        return $this->success([
-            'skill_id' => $insight->skill_id,
-            'demand' => $insight->demand,
-        ], 'Data industri disimpan');
+        return response()->json([
+            'status' => 200,
+            'message' => 'OK',
+            'data' => $insights,
+        ], 200);
     }
 }

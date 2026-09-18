@@ -9,16 +9,36 @@ class AchievementSeeder extends Seeder
 {
     public function run(): void
     {
-        Achievement::create([
-            'code' => 'first_assessment',
-            'title' => 'First Assessment',
-            'description' => 'Menyelesaikan skill assessment pertama.',
-        ]);
+        $achievements = [
+            [
+                'code' => 'first_assessment',
+                'title' => 'First Assessment',
+                'description' => 'Menyelesaikan skill assessment pertama.',
+            ],
+            [
+                'code' => 'first_roadmap',
+                'title' => 'Roadmap Dimulai',
+                'description' => 'Memulai learning roadmap pertama.',
+            ],
+            [
+                'code' => 'first_module_done',
+                'title' => 'Skill Builder',
+                'description' => 'Menyelesaikan modul roadmap pertama.',
+            ],
+            [
+                'code' => 'roadmap_completed',
+                'title' => 'Roadmap Completed',
+                'description' => 'Menyelesaikan seluruh fase roadmap.',
+            ],
+            [
+                'code' => 'portfolio_ready',
+                'title' => 'Portfolio Ready',
+                'description' => 'Portfolio Readiness Score mencapai 80% atau lebih.',
+            ],
+        ];
 
-        Achievement::create([
-            'code' => 'onboarding_complete',
-            'title' => 'Onboarding Selesai',
-            'description' => 'Menyelesaikan proses onboarding.',
-        ]);
+        foreach ($achievements as $a) {
+            Achievement::updateOrCreate(['code' => $a['code']], $a);
+        }
     }
 }

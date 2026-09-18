@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Skill;
 use Illuminate\Database\Seeder;
+use App\Models\IndustryInsight;
 
 class IndustryInsightSeeder extends Seeder
 {

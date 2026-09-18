@@ -36,5 +36,8 @@ return [
     'service_token' => env('ML_SERVICE_TOKEN'),
     'timeout' => env('ML_SERVICE_TIMEOUT', 15), // detik
 ],
+    'gemini' => [
+        'api_key' => env('GEMINI_API_KEY'),
+    ],
 
 ];
