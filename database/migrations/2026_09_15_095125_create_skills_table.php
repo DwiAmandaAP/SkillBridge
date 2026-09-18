@@ -15,6 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('code')->unique();
         $table->string('name');
+        $table->json('aliases')->nullable();
         $table->enum('category', ['technical', 'soft']);
         $table->timestamps();
     });

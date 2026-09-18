@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ScrapeRun;
@@ -32,7 +32,7 @@ class ScrapeRunController extends Controller
         ]);
 
         // Jalankan di background kalau pakai queue, atau langsung kalau masih sinkron sementara.
-        // Artisan::call('scrape:jobs', ['--run-id' => $run->id]);
+        Artisan::call('scrape:jobs', ['--run-id' => $run->id]);
 
         return $this->success([
             'scrape_run_id' => $run->id,
