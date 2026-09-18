@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssessmentQuestion;
+use App\Models\UserAchievement;
+use App\Models\UserSkill;
 use Illuminate\Http\Request;
 
 class AssessmentController extends Controller
@@ -22,7 +24,7 @@ class AssessmentController extends Controller
     public function submit(Request $request)
     {
         $validated = $request->validate([
-            'answers' => 'required|array',
+            'answers' => 'required|array|min:1',
             'answers.*.skill_id' => 'required|exists:skills,id',
             'answers.*.scenario_score' => 'required|numeric|min:0|max:100',
             'answers.*.confidence' => 'required|numeric|min:0|max:100',
@@ -30,19 +32,44 @@ class AssessmentController extends Controller
 
         $user = $request->user();
 
-        $score = collect($validated['answers'])
+        $averageScore = collect($validated['answers'])
             ->avg('scenario_score');
 
         $assessment = $user->assessmentHistory()->create([
-            'score' => round($score),
+            'score' => round($averageScore),
         ]);
+
+        foreach ($validated['answers'] as $answer) {
+            UserSkill::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'skill_id' => $answer['skill_id'],
+                ],
+                [
+                    'level' => round($answer['scenario_score']),
+                    'confidence' => round($answer['confidence']),
+                    'source' => 'scenario',
+                ]
+            );
+        }
+
+        $achievementsUnlocked = [];
+
+        $achievement = UserAchievement::firstOrCreate([
+            'user_id' => $user->id,
+            'achievement_code' => 'first_assessment',
+        ]);
+
+        if ($achievement->wasRecentlyCreated) {
+            $achievementsUnlocked[] = 'first_assessment';
+        }
 
         return response()->json([
             'status' => 200,
-            'message' => 'Assessment berhasil dikirim',
+            'message' => 'Assessment tersimpan',
             'data' => [
-                'score' => $assessment->score,
-                'taken_at' => $assessment->taken_at,
+                'average_score' => round($averageScore),
+                'achievements_unlocked' => $achievementsUnlocked,
             ],
         ], 200);
     }

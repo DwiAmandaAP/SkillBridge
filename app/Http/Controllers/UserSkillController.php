@@ -14,12 +14,10 @@ class UserSkillController extends Controller
             ->get();
 
         return response()->json([
-            'status' => 'success',
-            'message' => 'User skills retrieved successfully',
-            'data' => [
-                'skills' => $userSkills,
-            ],
-        ]);
+            'status' => 200,
+            'message' => 'OK',
+            'data' => $userSkills,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -44,11 +42,9 @@ class UserSkillController extends Controller
         );
 
         return response()->json([
-            'status' => 'success',
-            'message' => 'User skill saved successfully',
-            'data' => [
-                'skill' => $userSkill->load('skill'),
-            ],
-        ], 201);
+            'status' => 200,
+            'message' => 'User skill berhasil disimpan',
+            'data' => $userSkill->load('skill'),
+        ], 200);
     }
 }

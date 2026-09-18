@@ -22,6 +22,8 @@ use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\IndustryInsightController as UserIndustryInsightController;
+use App\Http\Controllers\ProgressHistoryController;
+use App\Http\Controllers\AchievementController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -51,6 +53,9 @@ Route::prefix('v1')->group(function () {
         Route::post('onboarding', [OnboardingController::class, 'store']);
         Route::get('skill-gap', [SkillGapController::class, 'index']);
         Route::get('readiness-score', [ReadinessController::class, 'index']);
+        Route::get('progress-history', [ProgressHistoryController::class, 'index']);
+        Route::get('achievements', [AchievementController::class, 'index']);
+
         Route::get('assessment/questions', [AssessmentController::class, 'questions']);
         Route::post('assessment/submit', [AssessmentController::class, 'submit']);
         Route::post('roadmap/generate', [RoadmapController::class, 'generate']);

@@ -9,6 +9,11 @@ class AssessmentQuestion extends Model
     protected $fillable = [
         'skill_id',
         'question',
+        'options',
+    ];
+
+    protected $casts = [
+        'options' => 'array',
     ];
 
     public function skill()
