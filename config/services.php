@@ -31,6 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'ml' => [
+    'base_url' => env('ML_SERVICE_URL', 'http://localhost:8001'),
+    'service_token' => env('ML_SERVICE_TOKEN'),
+    'timeout' => env('ML_SERVICE_TIMEOUT', 15), // detik
+],
     'gemini' => [
         'api_key' => env('GEMINI_API_KEY'),
     ],

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Achievement;
+use Illuminate\Database\Seeder;
 
 class AchievementSeeder extends Seeder
 {

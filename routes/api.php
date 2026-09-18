@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\AnalyticsController;
-use App\Http\Controllers\Admin\CareerController as AdminCareerController;
+use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CareerController as AdminCareerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndustryInsightController;
+use App\Http\Controllers\LearningResourceController;
+use App\Http\Controllers\ScoringSettingController;
+use App\Http\Controllers\ScrapeRunController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SkillTaxonomyController;
+use Illuminate\Support\Facades\Route;;
 use App\Http\Controllers\OnboardingController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\IndustryInsightController;
-use App\Http\Controllers\Admin\LearningResourceController;
-use App\Http\Controllers\Admin\ScoringSettingController;
-use App\Http\Controllers\Admin\ScrapeRunController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\SkillController;
-use App\Http\Controllers\Admin\UserController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserSkillController;
 use App\Http\Controllers\SkillGapController;
@@ -107,4 +108,11 @@ Route::prefix('v1/admin')
 
         Route::get('scrape-runs', [ScrapeRunController::class, 'index']);
         Route::post('scrape-runs/trigger', [ScrapeRunController::class, 'trigger']);
+});
+
+// Rute API scraping
+Route::prefix('internal')
+    ->middleware('service')
+    ->group(function () {
+        Route::get('skills', [SkillTaxonomyController::class, 'index']);
     });

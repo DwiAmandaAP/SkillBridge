@@ -10,545 +10,612 @@ class CareerSeeder extends Seeder
 {
     public function run(): void
     {
-        // Sudah dicocokkan ke Career.php asli: relasi many-to-many ke Skill
-        // lewat method skills() (bukan requiredSkills()), pivot table
-        // 'career_skill' (singular — PENTING: migration project ini sempat
-        // membuat tabel 'career_skills' plural, harus diperbaiki dulu di
-        // migration sebelum seeder ini bisa jalan, lihat catatan di README).
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'data-analyst'],
+        $careers = [
             [
-            'slug' => 'data-analyst',
-            'name' => 'Data Analyst',
-            'category' => 'Data',
-            'difficulty' => 'Beginner-friendly',
-            'industry_demand' => 78,
-            'job_sample_size' => 420,
-            'remote_friendly' => true,
-            'short_description' => 'Mengolah data mentah menjadi insight yang bisa dipakai untuk keputusan bisnis.',
-            'description' => 'Data Analyst bertanggung jawab mengumpulkan, membersihkan, dan menganalisis data untuk menjawab pertanyaan bisnis, lalu mengomunikasikan temuannya lewat laporan dan dashboard.',
-            'responsibilities' => [
-                'Menyiapkan dan membersihkan dataset dari berbagai sumber',
-                'Membuat dashboard dan laporan berkala',
-                'Melakukan analisis statistik dasar untuk menjawab pertanyaan bisnis',
-                'Berkomunikasi dengan tim non-teknis untuk menerjemahkan kebutuhan data',
+                'slug' => 'data-analyst',
+                'name' => 'Data Analyst',
+                'category' => 'Data',
+                'difficulty' => 'Beginner',
+                'industry_demand' => 65,
+                'job_sample_size' => 210,
+                'remote_friendly' => true,
+                'short_description' => 'Menganalisis data untuk mendukung keputusan bisnis.',
+                'description' => 'Data Analyst bertanggung jawab mengumpulkan, membersihkan, menganalisis, dan memvisualisasikan data untuk menghasilkan insight yang mendukung keputusan bisnis.',
+                'responsibilities' => [
+                    'Mengolah dan membersihkan data',
+                    'Melakukan analisis data',
+                    'Membuat dashboard dan visualisasi',
+                    'Menyusun laporan insight',
+                    'Menyampaikan hasil analisis kepada stakeholder',
+                ],
+                'tools' => [
+                    'SQL',
+                    'Excel',
+                    'Power BI',
+                    'Tableau',
+                ],
             ],
-            'tools' => [
-                'SQL',
-                'Excel',
-                'Power BI',
-                'Python',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'sql',
-                    'level' => 90,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'excel',
-                    'level' => 85,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'statistics',
-                    'level' => 80,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'powerbi',
-                    'level' => 75,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'python',
-                    'level' => 65,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'communication',
-                    'level' => 70,
-                    'importance' => 'medium',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'data-engineer'],
             [
-            'slug' => 'data-engineer',
-            'name' => 'Data Engineer',
-            'category' => 'Data',
-            'difficulty' => 'Intermediate',
-            'industry_demand' => 71,
-            'job_sample_size' => 310,
-            'remote_friendly' => true,
-            'short_description' => 'Membangun dan menjaga infrastruktur serta pipeline data agar data siap dipakai tim lain.',
-            'description' => 'Data Engineer merancang, membangun, dan memelihara sistem serta pipeline yang mengalirkan data dari berbagai sumber ke tempat yang bisa diakses tim analytics maupun product.',
-            'responsibilities' => [
-                'Membangun dan menjaga data pipeline (ETL/ELT)',
-                'Mendesain skema database yang efisien',
-                'Mengelola infrastruktur data di cloud',
-                'Menjamin kualitas dan keandalan data',
+                'slug' => 'data-engineer',
+                'name' => 'Data Engineer',
+                'category' => 'Data',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 71,
+                'job_sample_size' => 180,
+                'remote_friendly' => true,
+                'short_description' => 'Membangun dan memelihara infrastruktur data.',
+                'description' => 'Data Engineer membangun pipeline data, mengelola proses ETL, merancang infrastruktur data, dan memastikan data tersedia serta siap digunakan oleh tim lain.',
+                'responsibilities' => [
+                    'Membangun data pipeline',
+                    'Mengembangkan proses ETL',
+                    'Mengelola data warehouse',
+                    'Menjaga kualitas dan ketersediaan data',
+                    'Mengelola infrastruktur data',
+                ],
+                'tools' => [
+                    'SQL',
+                    'Python',
+                    'ETL',
+                    'Apache Spark',
+                    'Apache Kafka',
+                    'Docker',
+                ],
             ],
-            'tools' => [
-                'SQL',
-                'Python',
-                'Airflow',
-                'Docker',
-                'Cloud (AWS/GCP)',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'sql',
-                    'level' => 90,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'python',
-                    'level' => 85,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'datapipeline',
-                    'level' => 75,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'cloud',
-                    'level' => 70,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'docker',
-                    'level' => 65,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'statistics',
-                    'level' => 45,
-                    'importance' => 'low',
-                ],
-                [
-                    'code' => 'communication',
-                    'level' => 55,
-                    'importance' => 'low',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'software-engineer'],
             [
-            'slug' => 'software-engineer',
-            'name' => 'Software Engineer',
-            'category' => 'Engineering',
-            'difficulty' => 'Intermediate',
-            'industry_demand' => 85,
-            'job_sample_size' => 560,
-            'remote_friendly' => true,
-            'short_description' => 'Merancang, membangun, dan menjaga aplikasi atau sistem perangkat lunak.',
-            'description' => 'Software Engineer menulis, menguji, dan memelihara kode untuk membangun produk digital, bekerja sama dengan desainer dan product manager.',
-            'responsibilities' => [
-                'Mengembangkan fitur baru sesuai spesifikasi',
-                'Menulis kode yang teruji dan mudah dirawat',
-                'Melakukan code review bersama tim',
-                'Men-debug dan memperbaiki masalah di produksi',
+                'slug' => 'frontend-developer',
+                'name' => 'Frontend Developer',
+                'category' => 'Engineering',
+                'difficulty' => 'Beginner',
+                'industry_demand' => 75,
+                'job_sample_size' => 250,
+                'remote_friendly' => true,
+                'short_description' => 'Membangun antarmuka web yang interaktif dan responsif.',
+                'description' => 'Frontend Developer mengimplementasikan desain UI/UX menjadi aplikasi web yang interaktif, responsif, dan mudah digunakan.',
+                'responsibilities' => [
+                    'Membangun antarmuka web',
+                    'Mengimplementasikan desain UI/UX',
+                    'Mengintegrasikan API',
+                    'Mengoptimasi performa web',
+                    'Memastikan kompatibilitas browser',
+                ],
+                'tools' => [
+                    'HTML & CSS',
+                    'JavaScript',
+                    'TypeScript',
+                    'React',
+                    'Tailwind CSS',
+                    'Git',
+                ],
             ],
-            'tools' => [
-                'JavaScript',
-                'Git',
-                'React',
-                'SQL',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'javascript',
-                    'level' => 85,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'git',
-                    'level' => 80,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'problemsolving',
-                    'level' => 80,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'react',
-                    'level' => 60,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'sql',
-                    'level' => 60,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'python',
-                    'level' => 55,
-                    'importance' => 'low',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'ai-engineer'],
             [
-            'slug' => 'ai-engineer',
-            'name' => 'AI Engineer',
-            'category' => 'Data',
-            'difficulty' => 'Advanced',
-            'industry_demand' => 66,
-            'job_sample_size' => 190,
-            'remote_friendly' => true,
-            'short_description' => 'Membangun dan menerapkan model machine learning ke dalam produk nyata.',
-            'description' => 'AI Engineer menggabungkan pemahaman machine learning dengan software engineering untuk melatih, menguji, dan men-deploy model ke dalam sistem produksi.',
-            'responsibilities' => [
-                'Melatih dan mengevaluasi model machine learning',
-                'Menyiapkan data untuk kebutuhan training',
-                'Men-deploy model ke lingkungan produksi',
-                'Memantau performa model dari waktu ke waktu',
+                'slug' => 'backend-developer',
+                'name' => 'Backend Developer',
+                'category' => 'Engineering',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 78,
+                'job_sample_size' => 270,
+                'remote_friendly' => true,
+                'short_description' => 'Membangun server, API, dan sistem backend aplikasi.',
+                'description' => 'Backend Developer bertanggung jawab membangun logika aplikasi, REST API, integrasi database, autentikasi, serta sistem backend yang aman dan dapat diandalkan.',
+                'responsibilities' => [
+                    'Membangun REST API',
+                    'Mengembangkan business logic',
+                    'Mengelola database',
+                    'Menerapkan autentikasi dan otorisasi',
+                    'Mengoptimasi performa backend',
+                ],
+                'tools' => [
+                    'PHP',
+                    'Laravel',
+                    'Node.js',
+                    'Express.js',
+                    'SQL',
+                    'MySQL',
+                    'Git',
+                ],
             ],
-            'tools' => [
-                'Python',
-                'scikit-learn',
-                'Cloud (AWS/GCP)',
-                'Docker',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'python',
-                    'level' => 90,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'ml',
-                    'level' => 85,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'statistics',
-                    'level' => 80,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'sql',
-                    'level' => 65,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'cloud',
-                    'level' => 60,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'docker',
-                    'level' => 50,
-                    'importance' => 'low',
-                ],
-                [
-                    'code' => 'communication',
-                    'level' => 55,
-                    'importance' => 'low',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'cybersecurity-analyst'],
             [
-            'slug' => 'cybersecurity-analyst',
-            'name' => 'Cybersecurity Analyst',
-            'category' => 'Security',
-            'difficulty' => 'Intermediate',
-            'industry_demand' => 69,
-            'job_sample_size' => 240,
-            'remote_friendly' => false,
-            'short_description' => 'Melindungi sistem dan data organisasi dari ancaman keamanan siber.',
-            'description' => 'Cybersecurity Analyst memantau, mendeteksi, dan merespons ancaman keamanan, serta membangun praktik keamanan yang lebih baik di organisasi.',
-            'responsibilities' => [
-                'Memantau sistem untuk aktivitas mencurigakan',
-                'Melakukan audit dan penilaian kerentanan',
-                'Merespons dan menganalisis insiden keamanan',
-                'Menyusun rekomendasi kebijakan keamanan',
+                'slug' => 'fullstack-developer',
+                'name' => 'Full Stack Developer',
+                'category' => 'Engineering',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 82,
+                'job_sample_size' => 320,
+                'remote_friendly' => true,
+                'short_description' => 'Mengembangkan aplikasi web dari frontend hingga backend.',
+                'description' => 'Full Stack Developer mengembangkan aplikasi web secara menyeluruh, mulai dari antarmuka pengguna, API, business logic, hingga database.',
+                'responsibilities' => [
+                    'Membangun frontend aplikasi',
+                    'Membangun backend dan API',
+                    'Merancang dan mengelola database',
+                    'Mengintegrasikan frontend dan backend',
+                    'Melakukan deployment aplikasi',
+                ],
+                'tools' => [
+                    'HTML & CSS',
+                    'JavaScript',
+                    'TypeScript',
+                    'React',
+                    'Node.js',
+                    'Express.js',
+                    'Laravel',
+                    'SQL',
+                    'Git',
+                ],
             ],
-            'tools' => [
-                'SIEM tools',
-                'Linux',
-                'Wireshark',
-                'Cloud security',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'cybersecurity',
-                    'level' => 90,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'networking',
-                    'level' => 85,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'linux',
-                    'level' => 75,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'cloud',
-                    'level' => 55,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'problemsolving',
-                    'level' => 70,
-                    'importance' => 'medium',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'cloud-engineer'],
             [
-            'slug' => 'cloud-engineer',
-            'name' => 'Cloud Engineer',
-            'category' => 'Engineering',
-            'difficulty' => 'Intermediate',
-            'industry_demand' => 64,
-            'job_sample_size' => 260,
-            'remote_friendly' => true,
-            'short_description' => 'Mengelola infrastruktur cloud agar aplikasi berjalan andal dan efisien.',
-            'description' => 'Cloud Engineer merancang dan mengelola infrastruktur di layanan cloud, termasuk deployment, scaling, dan keamanan sistem.',
-            'responsibilities' => [
-                'Mengonfigurasi dan mengelola layanan cloud',
-                'Mengotomasi proses deployment',
-                'Memantau performa dan biaya infrastruktur',
-                'Menjaga keamanan konfigurasi cloud',
+                'slug' => 'mobile-developer',
+                'name' => 'Mobile Developer',
+                'category' => 'Engineering',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 70,
+                'job_sample_size' => 190,
+                'remote_friendly' => true,
+                'short_description' => 'Membangun aplikasi mobile untuk Android dan iOS.',
+                'description' => 'Mobile Developer mengembangkan aplikasi mobile yang responsif, aman, dan sesuai kebutuhan pengguna pada platform Android maupun iOS.',
+                'responsibilities' => [
+                    'Membangun aplikasi mobile',
+                    'Mengintegrasikan API',
+                    'Mengoptimasi performa aplikasi',
+                    'Melakukan testing aplikasi',
+                    'Memelihara aplikasi mobile',
+                ],
+                'tools' => [
+                    'Flutter',
+                    'React Native',
+                    'Android Development',
+                    'iOS Development',
+                    'Kotlin',
+                    'Swift',
+                ],
             ],
-            'tools' => [
-                'AWS/GCP/Azure',
-                'Docker',
-                'Linux',
-                'Terraform',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'cloud',
-                    'level' => 90,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'docker',
-                    'level' => 80,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'linux',
-                    'level' => 75,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'networking',
-                    'level' => 65,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'git',
-                    'level' => 60,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'python',
-                    'level' => 55,
-                    'importance' => 'low',
-                ],
-                [
-                    'code' => 'communication',
-                    'level' => 50,
-                    'importance' => 'low',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'uiux-designer'],
             [
-            'slug' => 'uiux-designer',
-            'name' => 'UI/UX Designer',
-            'category' => 'Design',
-            'difficulty' => 'Beginner-friendly',
-            'industry_demand' => 58,
-            'job_sample_size' => 300,
-            'remote_friendly' => true,
-            'short_description' => 'Merancang pengalaman dan tampilan produk digital yang mudah dipakai.',
-            'description' => 'UI/UX Designer meneliti kebutuhan pengguna dan menerjemahkannya menjadi alur serta tampilan antarmuka yang jelas dan enak dipakai.',
-            'responsibilities' => [
-                'Melakukan riset dan wawancara pengguna',
-                'Membuat wireframe dan prototype',
-                'Mendesain tampilan visual antarmuka',
-                'Melakukan usability testing',
+                'slug' => 'devops-engineer',
+                'name' => 'DevOps Engineer',
+                'category' => 'DevOps',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 80,
+                'job_sample_size' => 175,
+                'remote_friendly' => true,
+                'short_description' => 'Mengotomatisasi proses development, deployment, dan infrastructure.',
+                'description' => 'DevOps Engineer mengelola infrastruktur, otomatisasi deployment, CI/CD, containerization, monitoring, dan reliability aplikasi.',
+                'responsibilities' => [
+                    'Mengelola infrastructure',
+                    'Membangun CI/CD pipeline',
+                    'Mengelola container',
+                    'Mengotomatisasi deployment',
+                    'Memantau sistem dan aplikasi',
+                ],
+                'tools' => [
+                    'Linux',
+                    'Docker',
+                    'Kubernetes',
+                    'Git',
+                    'GitHub Actions',
+                    'Jenkins',
+                    'Terraform',
+                    'Ansible',
+                    'Bash',
+                ],
             ],
-            'tools' => [
-                'Figma',
-                'Design system',
-                'User research',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'uidesign',
-                    'level' => 90,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'figma',
-                    'level' => 85,
-                    'importance' => 'critical',
-                ],
-                [
-                    'code' => 'communication',
-                    'level' => 80,
-                    'importance' => 'high',
-                ],
-                [
-                    'code' => 'problemsolving',
-                    'level' => 65,
-                    'importance' => 'medium',
-                ],
-                [
-                    'code' => 'projectmanagement',
-                    'level' => 50,
-                    'importance' => 'low',
-                ],
-        ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
-        }
-
-        $career = Career::updateOrCreate(
-            ['slug' => 'product-manager'],
             [
-            'slug' => 'product-manager',
-            'name' => 'Product Manager',
-            'category' => 'Product',
-            'difficulty' => 'Advanced',
-            'industry_demand' => 55,
-            'job_sample_size' => 200,
-            'remote_friendly' => false,
-            'short_description' => 'Menentukan arah produk dan menjembatani kebutuhan user, bisnis, dan tim teknis.',
-            'description' => 'Product Manager menyusun visi dan prioritas produk, lalu bekerja sama dengan desain, engineering, dan bisnis untuk mewujudkannya.',
-            'responsibilities' => [
-                'Menyusun roadmap dan prioritas produk',
-                'Mengumpulkan dan menganalisis kebutuhan pengguna',
-                'Menulis spesifikasi fitur',
-                'Mengukur dampak fitur setelah rilis',
+                'slug' => 'cloud-engineer',
+                'name' => 'Cloud Engineer',
+                'category' => 'Cloud',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 83,
+                'job_sample_size' => 160,
+                'remote_friendly' => true,
+                'short_description' => 'Merancang dan mengelola infrastruktur cloud.',
+                'description' => 'Cloud Engineer merancang, menerapkan, dan memelihara infrastruktur cloud serta memastikan sistem dapat berjalan secara aman, scalable, dan reliable.',
+                'responsibilities' => [
+                    'Merancang cloud infrastructure',
+                    'Melakukan deployment aplikasi ke cloud',
+                    'Mengelola virtual machine',
+                    'Mengatur networking cloud',
+                    'Mengoptimasi biaya dan performa cloud',
+                ],
+                'tools' => [
+                    'AWS',
+                    'Azure',
+                    'Google Cloud',
+                    'Linux',
+                    'Docker',
+                    'Kubernetes',
+                    'Terraform',
+                ],
             ],
-            'tools' => [
-                'Analytics tools',
-                'Roadmap tools',
-                'SQL dasar',
-            ],
-        ]
-        );
 
-        $requiredSkills = [
-                [
-                    'code' => 'communication',
-                    'level' => 90,
-                    'importance' => 'critical',
+            [
+                'slug' => 'network-engineer',
+                'name' => 'Network Engineer',
+                'category' => 'Networking',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 68,
+                'job_sample_size' => 145,
+                'remote_friendly' => false,
+                'short_description' => 'Merancang, mengelola, dan memelihara jaringan komputer.',
+                'description' => 'Network Engineer bertanggung jawab merancang, mengimplementasikan, mengamankan, dan memelihara infrastruktur jaringan organisasi.',
+                'responsibilities' => [
+                    'Merancang jaringan',
+                    'Mengkonfigurasi router dan switch',
+                    'Mengelola TCP/IP',
+                    'Mengelola DNS dan DHCP',
+                    'Melakukan network monitoring',
+                    'Mengelola firewall dan VPN',
                 ],
-                [
-                    'code' => 'projectmanagement',
-                    'level' => 85,
-                    'importance' => 'critical',
+                'tools' => [
+                    'Networking',
+                    'TCP/IP',
+                    'DNS',
+                    'DHCP',
+                    'Cisco',
+                    'Cisco CCNA',
+                    'Routing & Switching',
+                    'VPN',
+                    'Firewall',
                 ],
-                [
-                    'code' => 'problemsolving',
-                    'level' => 80,
-                    'importance' => 'high',
+            ],
+
+            [
+                'slug' => 'cybersecurity-analyst',
+                'name' => 'Cybersecurity Analyst',
+                'category' => 'Cybersecurity',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 84,
+                'job_sample_size' => 155,
+                'remote_friendly' => true,
+                'short_description' => 'Melindungi sistem dan data dari ancaman keamanan.',
+                'description' => 'Cybersecurity Analyst memantau keamanan sistem, menganalisis ancaman, melakukan vulnerability assessment, dan membantu organisasi menangani insiden keamanan.',
+                'responsibilities' => [
+                    'Memantau keamanan sistem',
+                    'Menganalisis security events',
+                    'Melakukan vulnerability assessment',
+                    'Menangani security incident',
+                    'Menerapkan security controls',
                 ],
-                [
-                    'code' => 'statistics',
-                    'level' => 55,
-                    'importance' => 'medium',
+                'tools' => [
+                    'Cybersecurity',
+                    'Network Security',
+                    'SIEM',
+                    'IDS / IPS',
+                    'Firewall',
+                    'OWASP',
+                    'Security Operations',
                 ],
-                [
-                    'code' => 'sql',
-                    'level' => 50,
-                    'importance' => 'low',
+            ],
+
+            [
+                'slug' => 'penetration-tester',
+                'name' => 'Penetration Tester',
+                'category' => 'Cybersecurity',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 76,
+                'job_sample_size' => 110,
+                'remote_friendly' => true,
+                'short_description' => 'Menguji keamanan sistem dengan simulasi serangan.',
+                'description' => 'Penetration Tester melakukan pengujian keamanan secara terkontrol untuk menemukan kerentanan pada aplikasi, jaringan, dan sistem.',
+                'responsibilities' => [
+                    'Melakukan penetration testing',
+                    'Mengidentifikasi vulnerability',
+                    'Melakukan ethical hacking',
+                    'Menganalisis keamanan aplikasi',
+                    'Menyusun laporan keamanan',
                 ],
+                'tools' => [
+                    'Penetration Testing',
+                    'Ethical Hacking',
+                    'Vulnerability Assessment',
+                    'Network Security',
+                    'OWASP',
+                    'Cryptography',
+                ],
+            ],
+
+            [
+                'slug' => 'qa-engineer',
+                'name' => 'QA Engineer',
+                'category' => 'Quality Assurance',
+                'difficulty' => 'Beginner',
+                'industry_demand' => 69,
+                'job_sample_size' => 200,
+                'remote_friendly' => true,
+                'short_description' => 'Memastikan kualitas dan keandalan software.',
+                'description' => 'QA Engineer memastikan software memenuhi kebutuhan dan standar kualitas melalui proses testing manual maupun otomatis.',
+                'responsibilities' => [
+                    'Menyusun test case',
+                    'Melakukan software testing',
+                    'Melakukan manual testing',
+                    'Membangun automation testing',
+                    'Melaporkan dan memverifikasi bug',
+                ],
+                'tools' => [
+                    'Software Testing',
+                    'Manual Testing',
+                    'Automation Testing',
+                    'Selenium',
+                    'Cypress',
+                    'Playwright',
+                    'Postman',
+                    'Unit Testing',
+                    'Integration Testing',
+                ],
+            ],
+
+            [
+                'slug' => 'machine-learning-engineer',
+                'name' => 'Machine Learning Engineer',
+                'category' => 'Artificial Intelligence',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 88,
+                'job_sample_size' => 130,
+                'remote_friendly' => true,
+                'short_description' => 'Membangun dan menerapkan model machine learning.',
+                'description' => 'Machine Learning Engineer mengembangkan, melatih, mengevaluasi, dan melakukan deployment model machine learning untuk menyelesaikan masalah bisnis.',
+                'responsibilities' => [
+                    'Mengembangkan model machine learning',
+                    'Melakukan preprocessing data',
+                    'Melatih dan mengevaluasi model',
+                    'Melakukan model deployment',
+                    'Membangun pipeline machine learning',
+                ],
+                'tools' => [
+                    'Python',
+                    'Machine Learning',
+                    'Scikit-learn',
+                    'TensorFlow',
+                    'PyTorch',
+                    'MLOps',
+                    'Model Deployment',
+                ],
+            ],
+
+            [
+                'slug' => 'ai-engineer',
+                'name' => 'AI Engineer',
+                'category' => 'Artificial Intelligence',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 91,
+                'job_sample_size' => 120,
+                'remote_friendly' => true,
+                'short_description' => 'Mengembangkan solusi berbasis artificial intelligence.',
+                'description' => 'AI Engineer membangun dan mengintegrasikan solusi artificial intelligence seperti NLP, computer vision, dan generative AI ke dalam aplikasi.',
+                'responsibilities' => [
+                    'Mengembangkan solusi AI',
+                    'Mengembangkan aplikasi berbasis NLP',
+                    'Mengembangkan computer vision',
+                    'Mengintegrasikan model AI',
+                    'Melakukan model deployment',
+                ],
+                'tools' => [
+                    'Python',
+                    'Artificial Intelligence',
+                    'Machine Learning',
+                    'Deep Learning',
+                    'NLP',
+                    'Computer Vision',
+                    'Generative AI',
+                    'LLM',
+                ],
+            ],
+
+            [
+                'slug' => 'generative-ai-engineer',
+                'name' => 'Generative AI Engineer',
+                'category' => 'Artificial Intelligence',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 93,
+                'job_sample_size' => 95,
+                'remote_friendly' => true,
+                'short_description' => 'Membangun aplikasi berbasis generative AI dan LLM.',
+                'description' => 'Generative AI Engineer mengembangkan aplikasi AI menggunakan large language model, retrieval-augmented generation, embeddings, dan vector database.',
+                'responsibilities' => [
+                    'Mengembangkan aplikasi berbasis LLM',
+                    'Membangun RAG pipeline',
+                    'Mengelola vector database',
+                    'Mengembangkan prompt',
+                    'Mengintegrasikan model generative AI',
+                ],
+                'tools' => [
+                    'Generative AI',
+                    'LLM',
+                    'RAG',
+                    'Prompt Engineering',
+                    'Vector Database',
+                    'Pinecone',
+                    'Embeddings',
+                ],
+            ],
+
+            [
+                'slug' => 'ui-ux-designer',
+                'name' => 'UI/UX Designer',
+                'category' => 'Design',
+                'difficulty' => 'Beginner',
+                'industry_demand' => 67,
+                'job_sample_size' => 180,
+                'remote_friendly' => true,
+                'short_description' => 'Merancang pengalaman dan antarmuka digital yang mudah digunakan.',
+                'description' => 'UI/UX Designer merancang pengalaman pengguna dan antarmuka aplikasi berdasarkan kebutuhan pengguna dan hasil riset.',
+                'responsibilities' => [
+                    'Melakukan user research',
+                    'Membuat wireframe',
+                    'Merancang UI',
+                    'Membuat prototype',
+                    'Melakukan usability testing',
+                ],
+                'tools' => [
+                    'Figma',
+                    'UI Design',
+                    'UX Design',
+                    'User Research',
+                    'Wireframing',
+                    'Prototyping',
+                ],
+            ],
+
+            [
+                'slug' => 'it-support-specialist',
+                'name' => 'IT Support Specialist',
+                'category' => 'IT Support',
+                'difficulty' => 'Beginner',
+                'industry_demand' => 64,
+                'job_sample_size' => 230,
+                'remote_friendly' => false,
+                'short_description' => 'Memberikan dukungan teknis kepada pengguna dan organisasi.',
+                'description' => 'IT Support Specialist membantu pengguna menyelesaikan masalah hardware, software, jaringan, dan sistem operasional.',
+                'responsibilities' => [
+                    'Menangani masalah teknis pengguna',
+                    'Melakukan troubleshooting',
+                    'Memelihara perangkat komputer',
+                    'Mengelola sistem operasi',
+                    'Memberikan technical support',
+                ],
+                'tools' => [
+                    'IT Support',
+                    'Hardware Support',
+                    'Windows Server',
+                    'Networking',
+                    'Linux',
+                ],
+            ],
+
+            [
+                'slug' => 'system-administrator',
+                'name' => 'System Administrator',
+                'category' => 'Infrastructure',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 66,
+                'job_sample_size' => 170,
+                'remote_friendly' => false,
+                'short_description' => 'Mengelola server, sistem operasi, dan infrastruktur IT.',
+                'description' => 'System Administrator mengelola server, operating system, user access, virtualization, dan infrastruktur IT organisasi.',
+                'responsibilities' => [
+                    'Mengelola server',
+                    'Mengelola sistem operasi',
+                    'Mengelola user access',
+                    'Melakukan backup dan maintenance',
+                    'Mengelola virtual machine',
+                ],
+                'tools' => [
+                    'Linux',
+                    'Windows Server',
+                    'Active Directory',
+                    'Virtualization',
+                    'VMware',
+                    'Proxmox',
+                    'Bash',
+                ],
+            ],
+
+            [
+                'slug' => 'software-engineer',
+                'name' => 'Software Engineer',
+                'category' => 'Engineering',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 85,
+                'job_sample_size' => 350,
+                'remote_friendly' => true,
+                'short_description' => 'Merancang, membangun, dan memelihara software.',
+                'description' => 'Software Engineer merancang dan mengembangkan software menggunakan prinsip software engineering, architecture, design patterns, testing, dan version control.',
+                'responsibilities' => [
+                    'Merancang software',
+                    'Mengembangkan aplikasi',
+                    'Menerapkan design patterns',
+                    'Melakukan software testing',
+                    'Melakukan code review dan maintenance',
+                ],
+                'tools' => [
+                    'Java',
+                    'C++',
+                    'C#',
+                    'Python',
+                    'Object-Oriented Programming',
+                    'Design Patterns',
+                    'Software Architecture',
+                    'Git',
+                ],
+            ],
+
+            [
+                'slug' => 'software-architect',
+                'name' => 'Software Architect',
+                'category' => 'Engineering',
+                'difficulty' => 'Advanced',
+                'industry_demand' => 74,
+                'job_sample_size' => 90,
+                'remote_friendly' => true,
+                'short_description' => 'Merancang arsitektur dan struktur sistem software.',
+                'description' => 'Software Architect menentukan struktur, teknologi, pola desain, dan arsitektur sistem agar dapat memenuhi kebutuhan fungsional dan nonfungsional.',
+                'responsibilities' => [
+                    'Merancang software architecture',
+                    'Menentukan technology stack',
+                    'Merancang microservices',
+                    'Menentukan design patterns',
+                    'Membuat architectural guidelines',
+                ],
+                'tools' => [
+                    'Software Architecture',
+                    'Microservices',
+                    'RESTful API',
+                    'GraphQL',
+                    'gRPC',
+                    'Design Patterns',
+                    'Object-Oriented Programming',
+                    'Functional Programming',
+                ],
+            ],
+
+            [
+                'slug' => 'project-manager',
+                'name' => 'IT Project Manager',
+                'category' => 'Management',
+                'difficulty' => 'Intermediate',
+                'industry_demand' => 73,
+                'job_sample_size' => 140,
+                'remote_friendly' => true,
+                'short_description' => 'Mengelola proyek teknologi dari perencanaan hingga selesai.',
+                'description' => 'IT Project Manager mengatur perencanaan, koordinasi, timeline, risiko, dan komunikasi dalam proyek teknologi.',
+                'responsibilities' => [
+                    'Merencanakan proyek',
+                    'Mengatur timeline',
+                    'Mengelola risiko proyek',
+                    'Mengkoordinasikan tim',
+                    'Memantau progress proyek',
+                ],
+                'tools' => [
+                    'Project Management',
+                    'Agile',
+                    'Scrum',
+                    'Kanban',
+                    'Jira',
+                    'Communication',
+                    'Teamwork',
+                    'Leadership',
+                    'Time Management',
+                ],
+                'tools' => [
+                    'Project Management',
+                    'Agile',
+                    'Scrum',
+                    'Kanban',
+                    'Jira',
+                ],
+            ],
         ];
-        foreach ($requiredSkills as $req) {
-            $skill = Skill::where('code', $req['code'])->first();
-            if (!$skill) continue;
-            $career->skills()->syncWithoutDetaching([
-                $skill->id => ['required_level' => $req['level'], 'importance' => $req['importance']],
-            ]);
+
+        foreach ($careers as $career) {
+            Career::updateOrCreate(
+                ['slug' => $career['slug']],
+                $career
+            );
         }
     }
 }

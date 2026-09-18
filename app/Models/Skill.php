@@ -8,6 +8,10 @@ class Skill extends Model
 {
     protected $fillable = ['code', 'name', 'category'];
 
+    protected $casts = [
+    'aliases' => 'array',
+    ];
+
     public function careers()
     {
         return $this->belongsToMany(Career::class, 'career_skills')
