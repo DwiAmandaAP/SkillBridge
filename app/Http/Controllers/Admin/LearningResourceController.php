@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\LearningResource;
@@ -14,7 +14,14 @@ class LearningResourceController extends Controller
     public function index()
     {
         return $this->success(
-            LearningResource::select('id', 'skill_id', 'title', 'provider', 'type', 'url')->get()
+            LearningResource::select(
+                'id',
+                'skill_id',
+                'title',
+                'provider',
+                'type',
+                'url'
+            )->get()
         );
     }
 

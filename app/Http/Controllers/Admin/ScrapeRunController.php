@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ScrapeRun;
@@ -14,7 +14,12 @@ class ScrapeRunController extends Controller
     public function index()
     {
         $runs = ScrapeRun::orderByDesc('started_at')->get([
-            'id', 'started_at', 'status', 'jobs_found', 'jobs_processed', 'error_message',
+            'id',
+            'started_at',
+            'status',
+            'jobs_found',
+            'jobs_processed',
+            'error_message',
         ]);
 
         return $this->success($runs);

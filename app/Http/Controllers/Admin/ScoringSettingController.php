@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ScoringSetting;
@@ -37,10 +37,14 @@ class ScoringSettingController extends Controller
         $total = round(array_sum($validated), 2);
 
         if ($total != 1.0) {
-            return $this->error('Total bobot harus 1.0, saat ini '.$total, 422);
+            return $this->error(
+                'Total bobot harus 1.0, saat ini ' . $total,
+                422
+            );
         }
 
         $setting = ScoringSetting::first();
+
         $setting->update([
             'technical_weight' => $validated['technical'],
             'soft_weight' => $validated['soft'],

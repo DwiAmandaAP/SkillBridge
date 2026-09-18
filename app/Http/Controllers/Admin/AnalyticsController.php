@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -19,9 +19,44 @@ class AnalyticsController extends Controller
             ->groupBy('careers.name')
             ->get();
 
-        // gap_distribution butuh hasil perhitungan skill-gap per user (fitur student-facing,
-        // belum ada di scope admin). Sementara dikosongkan, tinggal isi begitu service-nya siap.
-        $gapDistribution = [];
+        $students = User::where('role', 'student')
+            ->whereNotNull('target_career_id')
+            ->with([
+                'skills.skill',
+                'targetCareer.careerSkills.skill',
+            ])
+            ->get();
+
+        $gapDistribution = [
+            'critical' => 0,
+            'moderate' => 0,
+            'minor' => 0,
+            'none' => 0,
+        ];
+
+        foreach ($students as $student) {
+            foreach ($student->targetCareer->careerSkills ?? [] as $careerSkill) {
+                $userSkill = $student->skills
+                    ->firstWhere('skill_id', $careerSkill->skill_id);
+
+                $userLevel = $userSkill ? $userSkill->level : 0;
+                $requiredLevel = $careerSkill->required_level;
+
+                $gapValue = $userLevel - $requiredLevel;
+
+                if ($gapValue <= -30) {
+                    $category = 'critical';
+                } elseif ($gapValue <= -15) {
+                    $category = 'moderate';
+                } elseif ($gapValue < 0) {
+                    $category = 'minor';
+                } else {
+                    $category = 'none';
+                }
+
+                $gapDistribution[$category]++;
+            }
+        }
 
         return $this->success([
             'career_distribution' => $careerDistribution,

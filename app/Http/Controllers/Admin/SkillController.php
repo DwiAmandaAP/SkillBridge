@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Skill;
@@ -13,7 +13,9 @@ class SkillController extends Controller
 
     public function index()
     {
-        return $this->success(Skill::select('id', 'code', 'name', 'category')->get());
+        return $this->success(
+            Skill::select('id', 'code', 'name', 'category')->get()
+        );
     }
 
     public function store(Request $request)
@@ -36,7 +38,7 @@ class SkillController extends Controller
     public function update(Request $request, Skill $skill)
     {
         $validated = $request->validate([
-            'code' => 'sometimes|string|max:100|unique:skills,code,'.$skill->id,
+            'code' => 'sometimes|string|max:100|unique:skills,code,' . $skill->id,
             'name' => 'sometimes|string|max:255',
             'category' => 'sometimes|in:technical,soft',
         ]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppSetting;
@@ -18,7 +18,10 @@ class SettingController extends Controller
         ]);
 
         $setting = AppSetting::first();
-        $setting->update(['industry_insight_mode' => $validated['mode']]);
+
+        $setting->update([
+            'industry_insight_mode' => $validated['mode'],
+        ]);
 
         return $this->success([
             'industry_insight_mode' => $setting->industry_insight_mode,
