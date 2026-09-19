@@ -52,7 +52,7 @@ endpoints:
           content-type: application/json
           x-ratelimit-limit: '60'
           x-ratelimit-remaining: '56'
-          access-control-allow-origin: '*'
+          vary: Origin
         description: null
     responseFields: []
     auth: []
@@ -121,7 +121,7 @@ endpoints:
           content-type: application/json
           x-ratelimit-limit: '60'
           x-ratelimit-remaining: '55'
-          access-control-allow-origin: '*'
+          vary: Origin
         description: null
     responseFields: []
     auth: []
@@ -178,7 +178,7 @@ endpoints:
           content-type: application/json
           x-ratelimit-limit: '60'
           x-ratelimit-remaining: '54'
-          access-control-allow-origin: '*'
+          vary: Origin
         description: null
     responseFields: []
     auth: []
@@ -248,7 +248,7 @@ endpoints:
           content-type: application/json
           x-ratelimit-limit: '60'
           x-ratelimit-remaining: '53'
-          access-control-allow-origin: '*'
+          vary: Origin
         description: null
     responseFields: []
     auth: []

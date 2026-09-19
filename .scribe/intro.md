@@ -3,7 +3,7 @@
 
 
 <aside>
-    <strong>Base URL</strong>: <code>http://skillbridge.test</code>
+    <strong>Base URL</strong>: <code>https://skillbridge-production-f8ed.up.railway.app</code>
 </aside>
 
     This documentation aims to provide all the information you need to work with our API.

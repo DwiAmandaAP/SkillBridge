@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://skillbridge.test";
+        var tryItOutBaseUrl = "https://skillbridge-production-f8ed.up.railway.app";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -397,7 +397,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://skillbridge.test</code>
+    <strong>Base URL</strong>: <code>https://skillbridge-production-f8ed.up.railway.app</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -427,14 +427,14 @@ Hasil dapat difilter berdasarkan kategori, tingkat kesulitan, dan dukungan kerja
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/careers?category=technology&amp;difficulty=intermediate&amp;remote_friendly=1" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/careers?category=technology&amp;difficulty=intermediate&amp;remote_friendly=1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/careers"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/careers"
 );
 
 const params = {
@@ -470,7 +470,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 59
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -614,14 +614,14 @@ level minimum, dan tingkat kepentingannya.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/careers/frontend-developer" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/careers/frontend-developer" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/careers/frontend-developer"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/careers/frontend-developer"
 );
 
 const headers = {
@@ -649,7 +649,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 58
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -836,14 +836,14 @@ Dengan region, data yang ditampilkan adalah snapshot terbaru per skill untuk pro
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/industry-insights?region=Jawa+Timur" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/industry-insights?region=Jawa+Timur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/industry-insights"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/industry-insights"
 );
 
 const params = {
@@ -877,7 +877,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 56
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1109,14 +1109,14 @@ pada provinsi tersebut.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/industry-insights/3/trend?region=Jawa+Timur" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/industry-insights/3/trend?region=Jawa+Timur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/industry-insights/3/trend"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/industry-insights/3/trend"
 );
 
 const params = {
@@ -1150,7 +1150,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 55
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1280,14 +1280,14 @@ data yang ditampilkan adalah snapshot terbaru per role untuk provinsi tersebut.<
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/role-insights?region=Jawa+Timur" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/role-insights?region=Jawa+Timur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/role-insights"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/role-insights"
 );
 
 const params = {
@@ -1321,7 +1321,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 54
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1469,14 +1469,14 @@ pada provinsi tersebut.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/role-insights/Frontend Developer/trend?region=Jawa+Timur" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/role-insights/Frontend Developer/trend?region=Jawa+Timur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/role-insights/Frontend Developer/trend"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/role-insights/Frontend Developer/trend"
 );
 
 const params = {
@@ -1510,7 +1510,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 53
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1637,7 +1637,7 @@ beserta token autentikasi Sanctum.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/auth/register" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/auth/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1654,7 +1654,7 @@ beserta token autentikasi Sanctum.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/auth/register"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/auth/register"
 );
 
 const headers = {
@@ -1853,7 +1853,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/auth/login" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1865,7 +1865,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/auth/login"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/auth/login"
 );
 
 const headers = {
@@ -2000,7 +2000,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/auth/logout" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/auth/logout" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2008,7 +2008,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/auth/logout"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/auth/logout"
 );
 
 const headers = {
@@ -2126,7 +2126,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/me" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/me" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2134,7 +2134,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/me"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/me"
 );
 
 const headers = {
@@ -2161,7 +2161,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2271,7 +2271,7 @@ Field yang tidak dikirim tidak akan diubah.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://skillbridge.test/api/v1/me" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/me" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -2290,7 +2290,7 @@ Field yang tidak dikirim tidak akan diubah.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/me"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/me"
 );
 
 const headers = {
@@ -2520,7 +2520,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/me/skills" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/me/skills" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2528,7 +2528,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/me/skills"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/me/skills"
 );
 
 const headers = {
@@ -2555,7 +2555,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2664,7 +2664,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/me/skills" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/me/skills" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -2679,7 +2679,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/me/skills"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/me/skills"
 );
 
 const headers = {
@@ -2858,7 +2858,7 @@ roadmap pertama pengguna.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/onboarding" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/onboarding" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -2877,7 +2877,7 @@ roadmap pertama pengguna.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/onboarding"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/onboarding"
 );
 
 const headers = {
@@ -3071,7 +3071,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/assessment/questions" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/assessment/questions" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3079,7 +3079,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/assessment/questions"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/assessment/questions"
 );
 
 const headers = {
@@ -3106,7 +3106,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -3216,7 +3216,7 @@ dan memberikan achievement first_assessment jika achievement tersebut baru terbu
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/assessment/submit" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/assessment/submit" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -3234,7 +3234,7 @@ dan memberikan achievement first_assessment jika achievement tersebut baru terbu
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/assessment/submit"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/assessment/submit"
 );
 
 const headers = {
@@ -3416,7 +3416,7 @@ lengkap dengan nilai gap, demand, kategori, dan prioritas belajar.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/skill-gap" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/skill-gap" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3424,7 +3424,7 @@ lengkap dengan nilai gap, demand, kategori, dan prioritas belajar.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/skill-gap"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/skill-gap"
 );
 
 const headers = {
@@ -3451,7 +3451,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -3561,7 +3561,7 @@ pengalaman, dan hasil assessment berdasarkan bobot scoring yang sedang aktif.</p
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/readiness-score" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/readiness-score" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3569,7 +3569,7 @@ pengalaman, dan hasil assessment berdasarkan bobot scoring yang sedang aktif.</p
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/readiness-score"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/readiness-score"
 );
 
 const headers = {
@@ -3596,7 +3596,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -3710,7 +3710,7 @@ dan kesenjangan level skill. Endpoint ini gagal jika pengguna belum memilih care
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/roadmap/generate" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/roadmap/generate" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3718,7 +3718,7 @@ dan kesenjangan level skill. Endpoint ini gagal jika pengguna belum memilih care
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/roadmap/generate"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/roadmap/generate"
 );
 
 const headers = {
@@ -3836,7 +3836,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/roadmap" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/roadmap" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3844,7 +3844,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/roadmap"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/roadmap"
 );
 
 const headers = {
@@ -3871,7 +3871,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -3980,7 +3980,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://skillbridge.test/api/v1/roadmap/phases/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/roadmap/phases/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -3992,7 +3992,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/roadmap/phases/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/roadmap/phases/1"
 );
 
 const headers = {
@@ -4144,7 +4144,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/portfolio" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4152,7 +4152,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/portfolio"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio"
 );
 
 const headers = {
@@ -4179,7 +4179,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -4288,7 +4288,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://skillbridge.test/api/v1/portfolio/checklist/github_profile" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/checklist/github_profile" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -4300,7 +4300,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/portfolio/checklist/github_profile"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/checklist/github_profile"
 );
 
 const headers = {
@@ -4458,7 +4458,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/portfolio/certificates" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/certificates" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4466,7 +4466,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/portfolio/certificates"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/certificates"
 );
 
 const headers = {
@@ -4493,7 +4493,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -4602,7 +4602,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/portfolio/certificates" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/certificates" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -4616,7 +4616,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/portfolio/certificates"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/certificates"
 );
 
 const headers = {
@@ -4777,7 +4777,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://skillbridge.test/api/v1/portfolio/certificates/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/certificates/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4785,7 +4785,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/portfolio/certificates/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/certificates/1"
 );
 
 const headers = {
@@ -4916,7 +4916,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/portfolio/github-analyze" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/github-analyze" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -4928,7 +4928,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/portfolio/github-analyze"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/portfolio/github-analyze"
 );
 
 const headers = {
@@ -5067,7 +5067,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/progress-history" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/progress-history" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5075,7 +5075,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/progress-history"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/progress-history"
 );
 
 const headers = {
@@ -5102,7 +5102,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -5211,7 +5211,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/achievements" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/achievements" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5219,7 +5219,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/achievements"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/achievements"
 );
 
 const headers = {
@@ -5246,7 +5246,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -5360,7 +5360,7 @@ jumlah career, dan rata-rata readiness score.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/dashboard" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/dashboard" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5368,7 +5368,7 @@ jumlah career, dan rata-rata readiness score.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/dashboard"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/dashboard"
 );
 
 const headers = {
@@ -5395,7 +5395,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -5509,7 +5509,7 @@ termasuk jumlah skill yang diwajibkan pada setiap career.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/careers" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5517,7 +5517,7 @@ termasuk jumlah skill yang diwajibkan pada setiap career.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/careers"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers"
 );
 
 const headers = {
@@ -5544,7 +5544,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -5654,7 +5654,7 @@ Slug career dibuat otomatis dari nama career dan dibuat unik jika sudah digunaka
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/admin/careers" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -5687,7 +5687,7 @@ Slug career dibuat otomatis dari nama career dan dibuat unik jika sudah digunaka
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/careers"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers"
 );
 
 const headers = {
@@ -6014,7 +6014,7 @@ Semua field body bersifat opsional.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://skillbridge.test/api/v1/admin/careers/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -6047,7 +6047,7 @@ Semua field body bersifat opsional.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/careers/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers/1"
 );
 
 const headers = {
@@ -6399,7 +6399,7 @@ Relasi skill career ikut ditangani oleh konfigurasi foreign key database.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://skillbridge.test/api/v1/admin/careers/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6407,7 +6407,7 @@ Relasi skill career ikut ditangani oleh konfigurasi foreign key database.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/careers/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/careers/1"
 );
 
 const headers = {
@@ -6554,7 +6554,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/skills" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6562,7 +6562,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/skills"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills"
 );
 
 const headers = {
@@ -6589,7 +6589,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -6698,7 +6698,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/admin/skills" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -6712,7 +6712,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/skills"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills"
 );
 
 const headers = {
@@ -6873,7 +6873,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://skillbridge.test/api/v1/admin/skills/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -6887,7 +6887,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/skills/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills/1"
 );
 
 const headers = {
@@ -7073,7 +7073,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://skillbridge.test/api/v1/admin/skills/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7081,7 +7081,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/skills/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/skills/1"
 );
 
 const headers = {
@@ -7228,7 +7228,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/industry-insights" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/industry-insights" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7236,7 +7236,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/industry-insights"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/industry-insights"
 );
 
 const headers = {
@@ -7263,7 +7263,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -7373,7 +7373,7 @@ Endpoint ini digunakan saat mode industry insight aplikasi adalah manual.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/admin/industry-insights" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/industry-insights" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -7389,7 +7389,7 @@ Endpoint ini digunakan saat mode industry insight aplikasi adalah manual.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/industry-insights"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/industry-insights"
 );
 
 const headers = {
@@ -7580,7 +7580,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/learning-resources" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/learning-resources" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7588,7 +7588,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/learning-resources"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/learning-resources"
 );
 
 const headers = {
@@ -7615,7 +7615,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -7724,7 +7724,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/admin/learning-resources" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/learning-resources" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -7740,7 +7740,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/learning-resources"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/learning-resources"
 );
 
 const headers = {
@@ -7927,7 +7927,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://skillbridge.test/api/v1/admin/learning-resources/1" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/learning-resources/1" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7935,7 +7935,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/learning-resources/1"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/learning-resources/1"
 );
 
 const headers = {
@@ -8082,7 +8082,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/users" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/users" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8090,7 +8090,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/users"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/users"
 );
 
 const headers = {
@@ -8117,7 +8117,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -8230,7 +8230,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/analytics" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/analytics" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8238,7 +8238,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/analytics"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/analytics"
 );
 
 const headers = {
@@ -8265,7 +8265,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -8378,7 +8378,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/scoring-settings" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scoring-settings" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8386,7 +8386,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/scoring-settings"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scoring-settings"
 );
 
 const headers = {
@@ -8413,7 +8413,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -8522,7 +8522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://skillbridge.test/api/v1/admin/scoring-settings" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scoring-settings" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -8538,7 +8538,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/scoring-settings"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scoring-settings"
 );
 
 const headers = {
@@ -8730,7 +8730,7 @@ dan manual dari input admin.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://skillbridge.test/api/v1/admin/settings/industry-insight-mode" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/settings/industry-insight-mode" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -8742,7 +8742,7 @@ dan manual dari input admin.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/settings/industry-insight-mode"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/settings/industry-insight-mode"
 );
 
 const headers = {
@@ -8881,7 +8881,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/v1/admin/scrape-runs" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scrape-runs" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8889,7 +8889,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/scrape-runs"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scrape-runs"
 );
 
 const headers = {
@@ -8916,7 +8916,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -9025,7 +9025,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://skillbridge.test/api/v1/admin/scrape-runs/trigger" \
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scrape-runs/trigger" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9033,7 +9033,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/v1/admin/scrape-runs/trigger"
+    "https://skillbridge-production-f8ed.up.railway.app/api/v1/admin/scrape-runs/trigger"
 );
 
 const headers = {
@@ -9156,7 +9156,7 @@ service internal seperti klasifikasi lowongan. (endpoint untuk ML)</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/internal/skills" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/internal/skills" \
     --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9164,7 +9164,7 @@ service internal seperti klasifikasi lowongan. (endpoint untuk ML)</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/internal/skills"
+    "https://skillbridge-production-f8ed.up.railway.app/api/internal/skills"
 );
 
 const headers = {
@@ -9193,7 +9193,7 @@ fetch(url, {
 content-type: application/json
 x-ratelimit-limit: 60
 x-ratelimit-remaining: 57
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -9305,14 +9305,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/documentation" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/documentation" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/documentation"
+    "https://skillbridge-production-f8ed.up.railway.app/api/documentation"
 );
 
 const headers = {
@@ -9338,7 +9338,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -9432,14 +9432,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://skillbridge.test/api/oauth2-callback" \
+    --get "https://skillbridge-production-f8ed.up.railway.app/api/oauth2-callback" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://skillbridge.test/api/oauth2-callback"
+    "https://skillbridge-production-f8ed.up.railway.app/api/oauth2-callback"
 );
 
 const headers = {
@@ -9465,7 +9465,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">content-type: text/html; charset=UTF-8
 cache-control: no-cache, private
-access-control-allow-origin: *
+vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">&lt;!doctype html&gt;
