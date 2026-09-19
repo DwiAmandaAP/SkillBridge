@@ -11,6 +11,14 @@ class IndustryInsightController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Admin Industry Insights
+     *
+     * Description: Menampilkan data industry insight global yang tersimpan untuk setiap skill.
+      *
+      * @group Admin - Industry Insight
+      * @authenticated
+     */
     public function index()
     {
         return $this->success(
@@ -20,6 +28,20 @@ class IndustryInsightController extends Controller
 
     // Dipakai baik untuk create maupun update manual (unique per skill_id).
     // Hanya relevan saat app_settings.industry_insight_mode = 'manual'.
+    /**
+     * POST Admin Industry Insight
+     *
+     * Description: Membuat atau memperbarui industry insight manual untuk satu skill.
+     * Endpoint ini digunakan saat mode industry insight aplikasi adalah manual.
+     *
+      * @group Admin - Industry Insight
+      * @authenticated
+     * @bodyParam skill_id integer required ID skill. Example: 3
+     * @bodyParam demand integer required Persentase demand antara 0 dan 100. Example: 75
+     * @bodyParam trend string required Arah tren demand. Example: up
+     * @bodyParam job_sample_size integer Jumlah sampel lowongan. Example: 120
+     * @bodyParam period string Periode data insight. Example: 2026-09
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([

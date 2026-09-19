@@ -11,6 +11,15 @@ class DashboardController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Admin Dashboard
+     *
+     * Description: Menampilkan ringkasan dashboard admin berupa jumlah pengguna mahasiswa,
+     * jumlah career, dan rata-rata readiness score.
+      *
+      * @group Admin - Dashboard
+      * @authenticated
+     */
     public function index()
     {
         $totalUsers = User::where('role', 'student')->count();

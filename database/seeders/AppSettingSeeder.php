@@ -10,7 +10,7 @@ class AppSettingSeeder extends Seeder
     public function run(): void
     {
         AppSetting::create([
-            'industry_insight_mode' => 'manual',
+            'industry_insight_mode' => 'auto',
             'last_aggregated_at' => null,
         ]);
     }

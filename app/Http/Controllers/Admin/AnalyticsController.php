@@ -10,6 +10,14 @@ class AnalyticsController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Admin Analytics
+     *
+     * Description: Menampilkan distribusi career tujuan mahasiswa dan distribusi kategori skill gap.
+      *
+      * @group Admin - Analytics
+      * @authenticated
+     */
     public function index()
     {
         $careerDistribution = User::where('role', 'student')

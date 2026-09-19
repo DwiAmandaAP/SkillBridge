@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class CareerController extends Controller
 {
+    /**
+     * GET Careers
+     *
+     * Description: Menampilkan daftar career yang tersedia untuk dipilih pengguna.
+     * Hasil dapat difilter berdasarkan kategori, tingkat kesulitan, dan dukungan kerja remote.
+     *
+      * @group Career
+      * @unauthenticated
+     * @queryParam category string Filter kategori career. Example: technology
+     * @queryParam difficulty string Filter tingkat kesulitan career. Example: intermediate
+     * @queryParam remote_friendly boolean Filter career yang mendukung kerja remote. Example: true
+     */
     public function index(Request $request)
     {
         $query = Career::query();
@@ -38,6 +50,16 @@ class CareerController extends Controller
         ]);
     }
 
+    /**
+     * GET Career Detail
+     *
+     * Description: Menampilkan detail career berdasarkan slug, termasuk daftar skill yang dibutuhkan,
+     * level minimum, dan tingkat kepentingannya.
+     *
+      * @group Career
+      * @unauthenticated
+     * @urlParam slug string required Slug career. Example: frontend-developer
+     */
     public function show($slug)
     {
         $career = Career::where('slug', $slug)

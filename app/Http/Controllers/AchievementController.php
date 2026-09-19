@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class AchievementController extends Controller
 {
+    /**
+     * GET Achievements
+     *
+     * Description: Mengambil daftar achievement yang telah diperoleh pengguna, diurutkan dari yang terbaru.
+      *
+      * @group User - Progress & Achievements
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $achievements = UserAchievement::with('achievement')

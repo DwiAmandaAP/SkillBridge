@@ -9,9 +9,9 @@ class CertificateSeeder extends Seeder
 {
     public function run(): void
     {
-        $amanda = User::where('email', 'amanda@mail.com')->first();
+        $budi = User::where('email', 'budi@gmail.com')->first();
 
-        $amanda->certificates()->create([
+        $budi->certificates()->create([
             'title' => 'SQL for Data Analysis',
             'issuer' => 'Coursera',
             'year' => '2025',

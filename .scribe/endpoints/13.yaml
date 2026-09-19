@@ -1,0 +1,560 @@
+name: 'Admin - Career Management'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/admin/careers
+    metadata:
+      custom: []
+      groupName: 'Admin - Career Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'GET Admin Careers'
+      description: |-
+        Description: Menampilkan seluruh career untuk kebutuhan administrasi,
+        termasuk jumlah skill yang diwajibkan pada setiap career.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"status":"error","message":"Unauthenticated.","data":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/admin/careers
+    metadata:
+      custom: []
+      groupName: 'Admin - Career Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'POST Admin Career'
+      description: |-
+        Description: Menambahkan career baru beserta daftar skill yang dibutuhkan.
+        Slug career dibuat otomatis dari nama career dan dibuat unik jika sudah digunakan.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Nama career.'
+        required: true
+        example: 'Backend Developer'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category:
+        custom: []
+        name: category
+        description: 'Kategori career.'
+        required: false
+        example: technology
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      difficulty:
+        custom: []
+        name: difficulty
+        description: 'Tingkat kesulitan career.'
+        required: false
+        example: intermediate
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      industry_demand:
+        custom: []
+        name: industry_demand
+        description: 'Persentase demand antara 0 dan 100.'
+        required: false
+        example: 80
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      job_sample_size:
+        custom: []
+        name: job_sample_size
+        description: 'Jumlah sampel lowongan.'
+        required: false
+        example: 150
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      remote_friendly:
+        custom: []
+        name: remote_friendly
+        description: 'Apakah career mendukung kerja remote.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      short_description:
+        custom: []
+        name: short_description
+        description: 'Ringkasan singkat career.'
+        required: false
+        example: 'Membangun layanan backend yang scalable.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Deskripsi lengkap career.'
+        required: false
+        example: 'Backend developer merancang dan mengembangkan layanan server.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      responsibilities:
+        custom: []
+        name: responsibilities
+        description: 'Daftar tanggung jawab career.'
+        required: false
+        example:
+          - 'Membangun API'
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      tools:
+        custom: []
+        name: tools
+        description: 'Daftar tools yang umum digunakan.'
+        required: false
+        example:
+          - Laravel
+          - PostgreSQL
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      required_skills:
+        custom: []
+        name: required_skills
+        description: 'Daftar skill yang diwajibkan.'
+        required: false
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'required_skills[].skill_id':
+        custom: []
+        name: 'required_skills[].skill_id'
+        description: 'ID skill.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'required_skills[].level':
+        custom: []
+        name: 'required_skills[].level'
+        description: 'Level skill antara 0 dan 100.'
+        required: true
+        example: 70
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'required_skills[].importance':
+        custom: []
+        name: 'required_skills[].importance'
+        description: 'Tingkat kepentingan skill.'
+        required: true
+        example: high
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Backend Developer'
+      category: technology
+      difficulty: intermediate
+      industry_demand: 80
+      job_sample_size: 150
+      remote_friendly: true
+      short_description: 'Membangun layanan backend yang scalable.'
+      description: 'Backend developer merancang dan mengembangkan layanan server.'
+      responsibilities:
+        - 'Membangun API'
+      tools:
+        - Laravel
+        - PostgreSQL
+      required_skills:
+        -
+          skill_id: 3
+          level: 70
+          importance: high
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: 'api/v1/admin/careers/{career_id}'
+    metadata:
+      custom: []
+      groupName: 'Admin - Career Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'PATCH Admin Career'
+      description: |-
+        Description: Memperbarui data career dan, jika dikirim, mengganti daftar skill yang dibutuhkan.
+        Semua field body bersifat opsional.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      career_id:
+        custom: []
+        name: career_id
+        description: 'The ID of the career.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      career:
+        custom: []
+        name: career
+        description: 'ID career.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      career_id: 1
+      career: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Nama career.'
+        required: false
+        example: 'Senior Backend Developer'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category:
+        custom: []
+        name: category
+        description: 'Kategori career.'
+        required: false
+        example: technology
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      difficulty:
+        custom: []
+        name: difficulty
+        description: 'Tingkat kesulitan career.'
+        required: false
+        example: advanced
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      industry_demand:
+        custom: []
+        name: industry_demand
+        description: 'Persentase demand antara 0 dan 100.'
+        required: false
+        example: 85
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      job_sample_size:
+        custom: []
+        name: job_sample_size
+        description: 'Jumlah sampel lowongan.'
+        required: false
+        example: 200
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      remote_friendly:
+        custom: []
+        name: remote_friendly
+        description: 'Apakah career mendukung kerja remote.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      short_description:
+        custom: []
+        name: short_description
+        description: 'Ringkasan singkat career.'
+        required: false
+        example: 'Mengembangkan sistem backend berskala besar.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Deskripsi lengkap career.'
+        required: false
+        example: 'Career untuk pengembangan layanan server dan API.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      responsibilities:
+        custom: []
+        name: responsibilities
+        description: 'Daftar tanggung jawab career.'
+        required: false
+        example:
+          - 'Merancang arsitektur layanan'
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      tools:
+        custom: []
+        name: tools
+        description: 'Daftar tools yang umum digunakan.'
+        required: false
+        example:
+          - Laravel
+          - Redis
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      required_skills:
+        custom: []
+        name: required_skills
+        description: 'Daftar skill yang diwajibkan. Jika dikirim, daftar lama akan diganti.'
+        required: false
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'required_skills[].skill_id':
+        custom: []
+        name: 'required_skills[].skill_id'
+        description: 'ID skill.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'required_skills[].level':
+        custom: []
+        name: 'required_skills[].level'
+        description: 'Level skill antara 0 dan 100.'
+        required: true
+        example: 80
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'required_skills[].importance':
+        custom: []
+        name: 'required_skills[].importance'
+        description: 'Tingkat kepentingan skill.'
+        required: true
+        example: high
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Senior Backend Developer'
+      category: technology
+      difficulty: advanced
+      industry_demand: 85
+      job_sample_size: 200
+      remote_friendly: true
+      short_description: 'Mengembangkan sistem backend berskala besar.'
+      description: 'Career untuk pengembangan layanan server dan API.'
+      responsibilities:
+        - 'Merancang arsitektur layanan'
+      tools:
+        - Laravel
+        - Redis
+      required_skills:
+        -
+          skill_id: 3
+          level: 80
+          importance: high
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/admin/careers/{career_id}'
+    metadata:
+      custom: []
+      groupName: 'Admin - Career Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'DELETE Admin Career'
+      description: |-
+        Description: Menghapus career berdasarkan ID career.
+        Relasi skill career ikut ditangani oleh konfigurasi foreign key database.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      career_id:
+        custom: []
+        name: career_id
+        description: 'The ID of the career.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      career:
+        custom: []
+        name: career
+        description: 'ID career.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      career_id: 1
+      career: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null

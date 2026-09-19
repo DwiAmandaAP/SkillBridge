@@ -10,12 +10,12 @@ class UserPortfolioProgressSeeder extends Seeder
 {
     public function run(): void
     {
-        $amanda = User::where('email', 'amanda@mail.com')->first();
+        $budi = User::where('email', 'budi@gmail.com')->first();
 
         $done = ['sql', 'project_basic', 'linkedin'];
 
         foreach ($done as $code) {
-            $amanda->portfolioProgress()->create([
+            $budi->portfolioProgress()->create([
                 'checklist_item_id' => PortfolioChecklistItem::where('code', $code)->value('id'),
                 'done' => true,
             ]);
@@ -24,7 +24,7 @@ class UserPortfolioProgressSeeder extends Seeder
         $notDone = ['python', 'project_advanced', 'resume', 'github_profile'];
 
         foreach ($notDone as $code) {
-            $amanda->portfolioProgress()->create([
+            $budi->portfolioProgress()->create([
                 'checklist_item_id' => PortfolioChecklistItem::where('code', $code)->value('id'),
                 'done' => false,
             ]);

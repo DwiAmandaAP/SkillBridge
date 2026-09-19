@@ -11,6 +11,16 @@ class SettingController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * PATCH Update Industry Insight Mode
+     *
+     * Description: Mengubah mode sumber industry insight antara otomatis dari pipeline scraping
+     * dan manual dari input admin.
+     *
+      * @group Admin - Settings
+      * @authenticated
+     * @bodyParam mode string required Mode insight: auto atau manual. Example: auto
+     */
     public function updateIndustryInsightMode(Request $request)
     {
         $validated = $request->validate([

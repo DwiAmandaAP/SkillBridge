@@ -1,0 +1,102 @@
+name: 'User - Onboarding'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/onboarding
+    metadata:
+      custom: []
+      groupName: 'User - Onboarding'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'POST Complete Onboarding'
+      description: |-
+        Description: Menyimpan career tujuan, target waktu, dan skill awal pengguna, kemudian membuat
+        roadmap pertama pengguna.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      target_career_id:
+        custom: []
+        name: target_career_id
+        description: 'ID career tujuan.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      target_timeline_months:
+        custom: []
+        name: target_timeline_months
+        description: 'Target waktu belajar dalam bulan.'
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      skills:
+        custom: []
+        name: skills
+        description: 'Daftar skill awal pengguna.'
+        required: true
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'skills[].skill_id':
+        custom: []
+        name: 'skills[].skill_id'
+        description: 'ID skill.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'skills[].level':
+        custom: []
+        name: 'skills[].level'
+        description: 'Level skill antara 0 dan 100.'
+        required: true
+        example: 40
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      target_career_id: 1
+      target_timeline_months: 12
+      skills:
+        -
+          skill_id: 3
+          level: 40
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null

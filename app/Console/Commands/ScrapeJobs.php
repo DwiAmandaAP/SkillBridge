@@ -8,7 +8,7 @@ use App\Models\ScrapeRun;
 use App\Models\Skill;
 use App\Services\Ml\MlClient;
 use App\Services\Ml\SkillAggregationService;
-use App\Services\Scraping\DummyJobSource;
+use App\Services\Ml\RoleDemandAggregationService;
 use App\Services\Scraping\JobScraperService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -21,8 +21,12 @@ class ScrapeJobs extends Command
 
     protected int $batchSize = 20; // jumlah job per batch ke ML
 
-    public function handle(JobScraperService $scraper, MlClient $ml, SkillAggregationService $aggregator)
-    {
+    public function handle(
+        JobScraperService $scraper, 
+        MlClient $ml, 
+        SkillAggregationService $skillaggregator,
+        RoleDemandAggregationService $roleAggregator
+        ) {
         $run = $this->option('run-id')
             ? ScrapeRun::find($this->option('run-id'))
             : null;
@@ -88,7 +92,8 @@ class ScrapeJobs extends Command
             }
         }
 
-        $aggregator->aggregate();
+        $skillaggregator->aggregate();
+        $roleAggregator->aggregate();
 
         $status = 'success';
         $errorMessage = null;

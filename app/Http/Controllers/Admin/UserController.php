@@ -10,7 +10,14 @@ class UserController extends Controller
 {
     use ApiResponse;
 
-    // Read-only sesuai dokumen.
+    /**
+     * GET Admin Users
+     *
+     * Description: Menampilkan ringkasan seluruh pengguna mahasiswa, career tujuan, dan readiness score terbaru.
+      *
+      * @group Admin - User Management
+      * @authenticated
+     */
     public function index()
     {
         $users = User::with('targetCareer:id,name')

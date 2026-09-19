@@ -14,17 +14,17 @@ class UserSeeder extends Seeder
         $dataEngineer = Career::where('slug', 'data-engineer')->first();
 
         User::create([
-            'full_name' => 'Amanda',
-            'email' => 'amanda@mail.com',
+            'full_name' => 'Budi',
+            'email' => 'budi@gmail.com',
             'password' => Hash::make('password'),
             'role' => 'student',
-            'university' => 'Universitas Airlangga',
-            'major' => 'Sistem Informasi',
-            'semester' => 6,
+            'university' => 'Universitas Negeri Surabaya',
+            'major' => 'Teknik Informatika',
+            'semester' => 7,
             'graduation_year' => 2027,
             'target_career_id' => $dataEngineer->id,
             'target_timeline_months' => 6,
-            'github_username' => 'amanda-dev',
+            'github_username' => 'budi-dev',
             'onboarding_complete' => true,
         ]);
 

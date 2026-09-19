@@ -1,0 +1,51 @@
+name: 'Internal - Skill Taxonomy'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/internal/skills
+    metadata:
+      custom: []
+      groupName: 'Internal - Skill Taxonomy'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'GET Internal Skill Taxonomy'
+      description: |-
+        Description: Mengambil taxonomy skill beserta kode, nama, dan aliases untuk kebutuhan
+        service internal seperti klasifikasi lowongan. (endpoint untuk ML)
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"status":401,"message":"Service token tidak valid","data":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null

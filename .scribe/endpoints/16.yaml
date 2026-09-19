@@ -1,0 +1,201 @@
+name: 'Admin - Learning Resources'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/admin/learning-resources
+    metadata:
+      custom: []
+      groupName: 'Admin - Learning Resources'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'GET Learning Resources'
+      description: 'Description: Menampilkan seluruh resource pembelajaran yang tersimpan.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"status":"error","message":"Unauthenticated.","data":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/admin/learning-resources
+    metadata:
+      custom: []
+      groupName: 'Admin - Learning Resources'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'POST Learning Resource'
+      description: 'Description: Menambahkan resource pembelajaran yang dikaitkan dengan sebuah skill.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      skill_id:
+        custom: []
+        name: skill_id
+        description: 'ID skill.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      title:
+        custom: []
+        name: title
+        description: 'Judul resource.'
+        required: true
+        example: 'PHP Documentation'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      provider:
+        custom: []
+        name: provider
+        description: 'Penyedia resource.'
+        required: false
+        example: PHP.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      type:
+        custom: []
+        name: type
+        description: 'Jenis resource.'
+        required: false
+        example: documentation
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      url:
+        custom: []
+        name: url
+        description: 'URL resource yang valid.'
+        required: true
+        example: 'https://www.php.net/docs.php'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      skill_id: 3
+      title: 'PHP Documentation'
+      provider: PHP.net
+      type: documentation
+      url: 'https://www.php.net/docs.php'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/admin/learning-resources/{learningResource_id}'
+    metadata:
+      custom: []
+      groupName: 'Admin - Learning Resources'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'DELETE Learning Resource'
+      description: 'Description: Menghapus resource pembelajaran berdasarkan ID resource.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      learningResource_id:
+        custom: []
+        name: learningResource_id
+        description: 'The ID of the learningResource.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      learningResource:
+        custom: []
+        name: learningResource
+        description: 'ID resource pembelajaran.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      learningResource_id: 1
+      learningResource: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null

@@ -1,0 +1,130 @@
+name: 'User - Skills'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/me/skills
+    metadata:
+      custom: []
+      groupName: 'User - Skills'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'GET My Skills'
+      description: 'Description: Mengambil seluruh skill milik pengguna yang sedang terautentikasi beserta detail skill-nya.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"status":"error","message":"Unauthenticated.","data":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/me/skills
+    metadata:
+      custom: []
+      groupName: 'User - Skills'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'POST Save My Skill'
+      description: 'Description: Menambah atau memperbarui skill pengguna. Kombinasi pengguna dan skill bersifat unik.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      skill_id:
+        custom: []
+        name: skill_id
+        description: 'ID skill.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      level:
+        custom: []
+        name: level
+        description: 'Level skill antara 0 dan 5.'
+        required: true
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      confidence:
+        custom: []
+        name: confidence
+        description: 'Tingkat kepercayaan antara 0 dan 100.'
+        required: false
+        example: 80
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      source:
+        custom: []
+        name: source
+        description: 'Sumber penilaian: self, scenario, atau github.'
+        required: false
+        example: self
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      skill_id: 3
+      level: 4
+      confidence: 80
+      source: self
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null

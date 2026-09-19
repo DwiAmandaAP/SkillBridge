@@ -11,6 +11,14 @@ class LearningResourceController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Learning Resources
+     *
+     * Description: Menampilkan seluruh resource pembelajaran yang tersimpan.
+      *
+      * @group Admin - Learning Resources
+      * @authenticated
+     */
     public function index()
     {
         return $this->success(
@@ -25,6 +33,19 @@ class LearningResourceController extends Controller
         );
     }
 
+    /**
+     * POST Learning Resource
+     *
+     * Description: Menambahkan resource pembelajaran yang dikaitkan dengan sebuah skill.
+     *
+      * @group Admin - Learning Resources
+      * @authenticated
+     * @bodyParam skill_id integer required ID skill. Example: 3
+     * @bodyParam title string required Judul resource. Example: PHP Documentation
+     * @bodyParam provider string Penyedia resource. Example: PHP.net
+     * @bodyParam type string Jenis resource. Example: documentation
+     * @bodyParam url string required URL resource yang valid. Example: https://www.php.net/docs.php
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -43,6 +64,15 @@ class LearningResourceController extends Controller
         ], 'Resource ditambahkan', 201);
     }
 
+    /**
+     * DELETE Learning Resource
+     *
+     * Description: Menghapus resource pembelajaran berdasarkan ID resource.
+     *
+      * @group Admin - Learning Resources
+      * @authenticated
+     * @urlParam learningResource integer required ID resource pembelajaran. Example: 1
+     */
     public function destroy(LearningResource $learningResource)
     {
         $learningResource->delete();

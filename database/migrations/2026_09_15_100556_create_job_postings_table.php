@@ -18,6 +18,8 @@ return new class extends Migration
         $table->string('title');
         $table->string('company')->nullable();
         $table->string('location')->nullable();
+        $table->string('region')->nullable();
+        $table->string('role_category')->nullable();
         $table->longText('description')->nullable();
         $table->timestamp('posted_at')->nullable();
         $table->string('search_keyword')->nullable();

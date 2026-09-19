@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Http;
 
 class PortfolioController extends Controller
 {
+    /**
+     * GET Portfolio Checklist
+     *
+     * Description: Mengambil seluruh item checklist portfolio beserta status penyelesaian pengguna.
+      *
+      * @group User - Portfolio
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $user = $request->user();
@@ -35,6 +43,16 @@ class PortfolioController extends Controller
         ], 200);
     }
 
+    /**
+     * PATCH Update Portfolio Checklist
+     *
+     * Description: Menandai item checklist portfolio sebagai selesai atau belum selesai.
+     *
+      * @group User - Portfolio
+      * @authenticated
+     * @urlParam item_code string required Kode item checklist portfolio. Example: github_profile
+     * @bodyParam done boolean required Status selesai item. Example: true
+     */
     public function updateChecklist(Request $request, $item_code)
     {
             $validated = $request->validate([
@@ -72,6 +90,15 @@ class PortfolioController extends Controller
             ], 200);
     }
 
+    /**
+     * POST Analyze GitHub Portfolio
+     *
+     * Description: Mengambil daftar repository publik dari GitHub berdasarkan username pengguna.
+     *
+      * @group User - Portfolio
+      * @authenticated
+     * @bodyParam github_username string required Username GitHub yang akan dianalisis. Example: octocat
+     */
     public function githubAnalyze(Request $request)
     {
         $validated = $request->validate([

@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\DB;
 
 class OnboardingController extends Controller
 {
+    /**
+     * POST Complete Onboarding
+     *
+     * Description: Menyimpan career tujuan, target waktu, dan skill awal pengguna, kemudian membuat
+     * roadmap pertama pengguna.
+     *
+      * @group User - Onboarding
+      * @authenticated
+     * @bodyParam target_career_id integer required ID career tujuan. Example: 1
+     * @bodyParam target_timeline_months integer required Target waktu belajar dalam bulan. Example: 12
+     * @bodyParam skills object[] required Daftar skill awal pengguna.
+     * @bodyParam skills[].skill_id integer required ID skill. Example: 3
+     * @bodyParam skills[].level integer required Level skill antara 0 dan 100. Example: 40
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([

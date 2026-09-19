@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class AssessmentController extends Controller
 {
+    /**
+     * GET Assessment Questions
+     *
+     * Description: Mengambil seluruh pertanyaan assessment beserta skill yang terkait.
+      *
+      * @group User - Assessment
+      * @authenticated
+     */
     public function questions(Request $request)
     {
         $questions = AssessmentQuestion::with('skill')
@@ -21,6 +29,19 @@ class AssessmentController extends Controller
         ], 200);
     }
 
+    /**
+     * POST Submit Assessment
+     *
+     * Description: Menyimpan jawaban assessment, menghitung nilai rata-rata, memperbarui skill pengguna,
+     * dan memberikan achievement first_assessment jika achievement tersebut baru terbuka.
+     *
+      * @group User - Assessment
+      * @authenticated
+     * @bodyParam answers object[] required Daftar jawaban assessment.
+     * @bodyParam answers[].skill_id integer required ID skill dari pertanyaan. Example: 3
+     * @bodyParam answers[].scenario_score number required Nilai skenario antara 0 dan 100. Example: 80
+     * @bodyParam answers[].confidence number required Tingkat kepercayaan antara 0 dan 100. Example: 75
+     */
     public function submit(Request $request)
     {
         $validated = $request->validate([

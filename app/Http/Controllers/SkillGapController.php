@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class SkillGapController extends Controller
 {
+    /**
+     * GET Skill Gap
+     *
+     * Description: Menghitung daftar skill yang masih berada di bawah level yang dibutuhkan career tujuan,
+     * lengkap dengan nilai gap, demand, kategori, dan prioritas belajar.
+      *
+      * @group User - Skill Gap & Readiness
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $user = $request->user();

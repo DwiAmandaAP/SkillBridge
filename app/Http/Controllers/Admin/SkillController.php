@@ -11,6 +11,14 @@ class SkillController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Admin Skills
+     *
+     * Description: Menampilkan seluruh skill yang tersedia untuk kebutuhan administrasi taxonomy.
+      *
+      * @group Admin - Skill Management
+      * @authenticated
+     */
     public function index()
     {
         return $this->success(
@@ -18,6 +26,17 @@ class SkillController extends Controller
         );
     }
 
+    /**
+     * POST Admin Skill
+     *
+     * Description: Menambahkan skill baru ke taxonomy skill.
+     *
+      * @group Admin - Skill Management
+      * @authenticated
+     * @bodyParam code string required Kode unik skill. Example: php
+     * @bodyParam name string required Nama skill. Example: PHP
+     * @bodyParam category string required Kategori skill: technical atau soft. Example: technical
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -35,6 +54,18 @@ class SkillController extends Controller
         ], 'Skill ditambahkan', 201);
     }
 
+    /**
+     * PATCH Admin Skill
+     *
+     * Description: Memperbarui data skill yang sudah ada. Semua field bersifat opsional.
+     *
+      * @group Admin - Skill Management
+      * @authenticated
+     * @urlParam skill integer required ID skill. Example: 3
+     * @bodyParam code string Kode unik skill. Example: php
+     * @bodyParam name string Nama skill. Example: PHP
+     * @bodyParam category string Kategori skill: technical atau soft. Example: technical
+     */
     public function update(Request $request, Skill $skill)
     {
         $validated = $request->validate([
@@ -51,6 +82,15 @@ class SkillController extends Controller
         ], 'Skill diperbarui');
     }
 
+    /**
+     * DELETE Admin Skill
+     *
+     * Description: Menghapus skill dari taxonomy.
+     *
+      * @group Admin - Skill Management
+      * @authenticated
+     * @urlParam skill integer required ID skill. Example: 3
+     */
     public function destroy(Skill $skill)
     {
         $skill->delete();

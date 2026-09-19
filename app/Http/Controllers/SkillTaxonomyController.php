@@ -10,6 +10,15 @@ class SkillTaxonomyController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Internal Skill Taxonomy
+     *
+     * Description: Mengambil taxonomy skill beserta kode, nama, dan aliases untuk kebutuhan
+     * service internal seperti klasifikasi lowongan. (endpoint untuk ML)
+      *
+      * @group Internal - Skill Taxonomy
+      * @authenticated
+     */
     public function index()
     {
         $skills = Skill::select('code', 'name', 'aliases')->get()

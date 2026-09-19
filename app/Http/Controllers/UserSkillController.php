@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class UserSkillController extends Controller
 {
+    /**
+     * GET My Skills
+     *
+     * Description: Mengambil seluruh skill milik pengguna yang sedang terautentikasi beserta detail skill-nya.
+      *
+      * @group User - Skills
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $userSkills = UserSkill::with('skill')
@@ -20,6 +28,18 @@ class UserSkillController extends Controller
         ], 200);
     }
 
+    /**
+     * POST Save My Skill
+     *
+     * Description: Menambah atau memperbarui skill pengguna. Kombinasi pengguna dan skill bersifat unik.
+     *
+      * @group User - Skills
+      * @authenticated
+     * @bodyParam skill_id integer required ID skill. Example: 3
+     * @bodyParam level integer required Level skill antara 0 dan 5. Example: 4
+     * @bodyParam confidence integer Tingkat kepercayaan antara 0 dan 100. Example: 80
+     * @bodyParam source string Sumber penilaian: self, scenario, atau github. Example: self
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([

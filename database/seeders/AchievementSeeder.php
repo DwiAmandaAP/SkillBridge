@@ -35,6 +35,11 @@ class AchievementSeeder extends Seeder
                 'title' => 'Portfolio Ready',
                 'description' => 'Portfolio Readiness Score mencapai 80% atau lebih.',
             ],
+            [
+                'code' => 'onboarding_complete',
+                'title' => 'Menyelesaikan semua proses',
+                'description' => 'Menyelesaikan semua proses',
+            ],
         ];
 
         foreach ($achievements as $a) {

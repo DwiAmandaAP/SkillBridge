@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class ReadinessController extends Controller
 {
+    /**
+     * GET Readiness Score
+     *
+     * Description: Menghitung skor kesiapan pengguna dari technical skill, soft skill, portfolio,
+     * pengalaman, dan hasil assessment berdasarkan bobot scoring yang sedang aktif.
+      *
+      * @group User - Skill Gap & Readiness
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $user = $request->user();

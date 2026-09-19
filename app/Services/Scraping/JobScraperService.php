@@ -3,15 +3,21 @@
 namespace App\Services\Scraping;
 
 use App\Models\JobPosting;
+use App\Services\Classification\JobRoleClassifier;
+use App\Services\Location\LocationNormalizer;
 use Illuminate\Support\Facades\Log;
 
 class JobScraperService
 {
     protected JobRelevanceFilter $relevanceFilter;
+    protected LocationNormalizer $locationNormalizer;
+    protected JobRoleClassifier $roleClassifier;
 
     public function __construct(protected JobSourceInterface $source)
     {
         $this->relevanceFilter = new JobRelevanceFilter();
+        $this->locationNormalizer = new LocationNormalizer();
+        $this->roleClassifier = new JobRoleClassifier();
     }
 
     public function scrapeAndStore(array $keywords): int
@@ -26,7 +32,6 @@ class JobScraperService
                 continue;
             }
 
-            // Filter noise sebelum disimpan ke database.
             $filteredJobs = $this->relevanceFilter->filterJobs($rawJobs);
 
             $excluded = count($rawJobs) - count($filteredJobs);
@@ -39,6 +44,9 @@ class JobScraperService
                     continue;
                 }
 
+                $region = $this->locationNormalizer->normalize($job['location'] ?? null);
+                $roleCategory = $this->roleClassifier->classify($job['title'] ?? '');
+
                 $posting = JobPosting::firstOrCreate(
                     ['source_url' => $job['source_url']],
                     [
@@ -46,6 +54,8 @@ class JobScraperService
                         'title' => $job['title'] ?? '-',
                         'company' => $job['company'] ?? null,
                         'location' => $job['location'] ?? null,
+                        'region' => $region,
+                        'role_category' => $roleCategory,
                         'description' => $job['description'] ?? null,
                         'posted_at' => $job['posted_at'] ?? null,
                         'search_keyword' => $keyword,

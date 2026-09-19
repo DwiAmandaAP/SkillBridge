@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class RoadmapController extends Controller
 {
+    /**
+     * POST Generate Roadmap
+     *
+     * Description: Membuat atau membuat ulang roadmap berdasarkan career tujuan, skill pengguna,
+     * dan kesenjangan level skill. Endpoint ini gagal jika pengguna belum memilih career tujuan.
+      *
+      * @group User - Roadmap
+      * @authenticated
+     */
     public function generate(Request $request)
     {
         $user = $request->user();
@@ -108,6 +117,14 @@ class RoadmapController extends Controller
         ], 200);
     }
 
+    /**
+     * GET My Roadmap
+     *
+     * Description: Mengambil roadmap pengguna beserta career tujuan dan seluruh fase roadmap.
+      *
+      * @group User - Roadmap
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $user = $request->user();
@@ -133,6 +150,16 @@ class RoadmapController extends Controller
             'data' => $roadmap,
         ]);
     }
+        /**
+         * PATCH Update Roadmap Phase
+         *
+         * Description: Memperbarui status fase roadmap milik pengguna yang sedang terautentikasi.
+         *
+         * @group User - Roadmap
+         * @authenticated
+         * @urlParam id integer required ID fase roadmap. Example: 1
+         * @bodyParam status string required Status fase: not_started, in_progress, atau completed. Example: in_progress
+         */
         public function updatePhase(Request $request, $id)
         {
             $validated = $request->validate([

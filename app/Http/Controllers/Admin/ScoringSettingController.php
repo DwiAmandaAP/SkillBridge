@@ -11,6 +11,14 @@ class ScoringSettingController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Scoring Settings
+     *
+     * Description: Mengambil bobot komponen yang digunakan untuk menghitung readiness score.
+      *
+      * @group Admin - Scoring Settings
+      * @authenticated
+     */
     public function show()
     {
         $setting = ScoringSetting::first();
@@ -24,6 +32,19 @@ class ScoringSettingController extends Controller
         ]);
     }
 
+    /**
+     * PUT Scoring Settings
+     *
+     * Description: Memperbarui bobot readiness score. Total seluruh bobot wajib sama dengan 1.0.
+     *
+      * @group Admin - Scoring Settings
+      * @authenticated
+     * @bodyParam technical number required Bobot technical skill antara 0 dan 1. Example: 0.3
+     * @bodyParam soft number required Bobot soft skill antara 0 dan 1. Example: 0.2
+     * @bodyParam portfolio number required Bobot portfolio antara 0 dan 1. Example: 0.2
+     * @bodyParam experience number required Bobot pengalaman antara 0 dan 1. Example: 0.1
+     * @bodyParam assessment number required Bobot assessment antara 0 dan 1. Example: 0.2
+     */
     public function update(Request $request)
     {
         $validated = $request->validate([

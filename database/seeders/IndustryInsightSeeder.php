@@ -11,11 +11,11 @@ class IndustryInsightSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['code' => 'sql', 'demand' => 82, 'trend' => 'stable', 'job_sample_size' => 350, 'period' => '3 bulan terakhir'],
-            ['code' => 'python', 'demand' => 78, 'trend' => 'up', 'job_sample_size' => 300, 'period' => '3 bulan terakhir'],
-            ['code' => 'excel', 'demand' => 65, 'trend' => 'stable', 'job_sample_size' => 220, 'period' => '3 bulan terakhir'],
-            ['code' => 'etl', 'demand' => 58, 'trend' => 'up', 'job_sample_size' => 150, 'period' => '3 bulan terakhir'],
-            ['code' => 'react', 'demand' => 60, 'trend' => 'stable', 'job_sample_size' => 180, 'period' => '3 bulan terakhir'],
+            ['code' => 'sql', 'demand' => 82, 'trend' => 'stable', 'job_sample_size' => 350, 'period' => '1 bulan terakhir'],
+            ['code' => 'python', 'demand' => 78, 'trend' => 'up', 'job_sample_size' => 300, 'period' => '1 bulan terakhir'],
+            ['code' => 'excel', 'demand' => 65, 'trend' => 'stable', 'job_sample_size' => 220, 'period' => '1 bulan terakhir'],
+            ['code' => 'etl', 'demand' => 58, 'trend' => 'up', 'job_sample_size' => 150, 'period' => '1 bulan terakhir'],
+            ['code' => 'react', 'demand' => 60, 'trend' => 'stable', 'job_sample_size' => 180, 'period' => '1 bulan terakhir'],
         ];
 
         foreach ($data as $row) {

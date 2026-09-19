@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\CareerController;
-use App\Http\Controllers\CareerController as AdminCareerController;
 
 use App\Http\Controllers\Admin\AnalyticsController;
+use App\Http\Controllers\Admin\CareerController as AdminCareerController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\IndustryInsightController;
+use App\Http\Controllers\Admin\IndustryInsightController as AdminIndustryInsightController;
 use App\Http\Controllers\Admin\LearningResourceController;
 use App\Http\Controllers\Admin\ScoringSettingController;
 use App\Http\Controllers\Admin\ScrapeRunController;
@@ -25,9 +25,10 @@ use App\Http\Controllers\RoadmapController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\IndustryInsightController as UserIndustryInsightController;
+use App\Http\Controllers\IndustryInsightController;
 use App\Http\Controllers\ProgressHistoryController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\RoleInsightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,13 +43,12 @@ use App\Http\Controllers\AchievementController;
 
 // Rute API Auth
 Route::prefix('v1')->group(function () {
-
-    Route::post('auth/register', [AuthController::class, 'register']);
-    Route::post('auth/login', [AuthController::class, 'login']);
-
     // Career (public)
     Route::get('careers', [CareerController::class, 'index']);
     Route::get('careers/{slug}', [CareerController::class, 'show']);
+    
+    Route::post('auth/register', [AuthController::class, 'register']);
+    Route::post('auth/login', [AuthController::class, 'login']);
 
     Route::middleware('auth:sanctum')->group(function () {
 
@@ -86,12 +86,26 @@ Route::prefix('v1')->group(function () {
         Route::get('portfolio/certificates', [CertificateController::class, 'index']);
         Route::post('portfolio/certificates', [CertificateController::class, 'store']);
         Route::delete('portfolio/certificates/{id}', [CertificateController::class, 'destroy']);
-
+        
         Route::post('portfolio/github-analyze', [PortfolioController::class, 'githubAnalyze']);
-
-        // Industry Insights (user)
-        Route::get('industry-insights', [UserIndustryInsightController::class, 'index']);
-    });
+        });
+});
+        
+        
+// Rute API Scraping / Internal
+Route::prefix('internal')
+    ->middleware('service')
+    ->group(function () {
+        Route::get('skills', [SkillTaxonomyController::class, 'index']);
+ });
+        
+// Rute Industry Insight
+ Route::prefix('v1')->group(function () {
+    Route::get('industry-insights', [IndustryInsightController::class, 'index']);
+    Route::get('industry-insights/{skill_id}/trend', [IndustryInsightController::class, 'trend']);
+        
+    Route::get('role-insights', [RoleInsightController::class, 'index']);
+    Route::get('role-insights/{role}/trend', [RoleInsightController::class, 'trend']);
 });
 
 
@@ -116,8 +130,8 @@ Route::prefix('v1/admin')
         Route::delete('skills/{skill}', [SkillController::class, 'destroy']);
 
         // Industry Insights Admin
-        Route::get('industry-insights', [IndustryInsightController::class, 'index']);
-        Route::post('industry-insights', [IndustryInsightController::class, 'store']);
+        Route::get('industry-insights', [AdminIndustryInsightController::class, 'index']);
+        Route::post('industry-insights', [AdminIndustryInsightController::class, 'store']);
 
         // Learning Resources
         Route::get('learning-resources', [LearningResourceController::class, 'index']);
@@ -146,13 +160,6 @@ Route::prefix('v1/admin')
         // Scrape Runs
         Route::get('scrape-runs', [ScrapeRunController::class, 'index']);
         Route::post('scrape-runs/trigger', [ScrapeRunController::class, 'trigger']);
-    });
+});
 
 
-// Rute API Scraping / Internal
-Route::prefix('internal')
-    ->middleware('service')
-    ->group(function () {
-
-        Route::get('skills', [SkillTaxonomyController::class, 'index']);
-    });

@@ -12,6 +12,15 @@ class CareerController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Admin Careers
+     *
+     * Description: Menampilkan seluruh career untuk kebutuhan administrasi,
+     * termasuk jumlah skill yang diwajibkan pada setiap career.
+        *
+        * @group Admin - Career Management
+        * @authenticated
+     */
     public function index()
     {
         $careers = Career::withCount('careerSkills as required_skills_count')->get();
@@ -23,6 +32,29 @@ class CareerController extends Controller
         ]));
     }
 
+    /**
+     * POST Admin Career
+     *
+     * Description: Menambahkan career baru beserta daftar skill yang dibutuhkan.
+     * Slug career dibuat otomatis dari nama career dan dibuat unik jika sudah digunakan.
+     *
+        * @group Admin - Career Management
+        * @authenticated
+     * @bodyParam name string required Nama career. Example: Backend Developer
+     * @bodyParam category string Kategori career. Example: technology
+     * @bodyParam difficulty string Tingkat kesulitan career. Example: intermediate
+     * @bodyParam industry_demand integer Persentase demand antara 0 dan 100. Example: 80
+     * @bodyParam job_sample_size integer Jumlah sampel lowongan. Example: 150
+     * @bodyParam remote_friendly boolean Apakah career mendukung kerja remote. Example: true
+     * @bodyParam short_description string Ringkasan singkat career. Example: Membangun layanan backend yang scalable.
+     * @bodyParam description string Deskripsi lengkap career. Example: Backend developer merancang dan mengembangkan layanan server.
+     * @bodyParam responsibilities array Daftar tanggung jawab career. Example: ["Membangun API"]
+     * @bodyParam tools array Daftar tools yang umum digunakan. Example: ["Laravel", "PostgreSQL"]
+     * @bodyParam required_skills object[] Daftar skill yang diwajibkan.
+     * @bodyParam required_skills[].skill_id integer required ID skill. Example: 3
+     * @bodyParam required_skills[].level integer required Level skill antara 0 dan 100. Example: 70
+     * @bodyParam required_skills[].importance string required Tingkat kepentingan skill. Example: high
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -71,6 +103,30 @@ class CareerController extends Controller
         ], 'Career ditambahkan', 201);
     }
 
+    /**
+     * PATCH Admin Career
+     *
+     * Description: Memperbarui data career dan, jika dikirim, mengganti daftar skill yang dibutuhkan.
+     * Semua field body bersifat opsional.
+     *
+        * @group Admin - Career Management
+        * @authenticated
+     * @urlParam career integer required ID career. Example: 1
+     * @bodyParam name string Nama career. Example: Senior Backend Developer
+     * @bodyParam category string Kategori career. Example: technology
+     * @bodyParam difficulty string Tingkat kesulitan career. Example: advanced
+     * @bodyParam industry_demand integer Persentase demand antara 0 dan 100. Example: 85
+     * @bodyParam job_sample_size integer Jumlah sampel lowongan. Example: 200
+     * @bodyParam remote_friendly boolean Apakah career mendukung kerja remote. Example: true
+     * @bodyParam short_description string Ringkasan singkat career. Example: Mengembangkan sistem backend berskala besar.
+     * @bodyParam description string Deskripsi lengkap career. Example: Career untuk pengembangan layanan server dan API.
+     * @bodyParam responsibilities array Daftar tanggung jawab career. Example: ["Merancang arsitektur layanan"]
+     * @bodyParam tools array Daftar tools yang umum digunakan. Example: ["Laravel", "Redis"]
+     * @bodyParam required_skills object[] Daftar skill yang diwajibkan. Jika dikirim, daftar lama akan diganti.
+     * @bodyParam required_skills[].skill_id integer required ID skill. Example: 3
+     * @bodyParam required_skills[].level integer required Level skill antara 0 dan 100. Example: 80
+     * @bodyParam required_skills[].importance string required Tingkat kepentingan skill. Example: high
+     */
     public function update(Request $request, Career $career)
     {
         $validated = $request->validate([
@@ -109,6 +165,16 @@ class CareerController extends Controller
         ], 'Career diperbarui');
     }
 
+    /**
+     * DELETE Admin Career
+     *
+     * Description: Menghapus career berdasarkan ID career.
+     * Relasi skill career ikut ditangani oleh konfigurasi foreign key database.
+     *
+        * @group Admin - Career Management
+        * @authenticated
+     * @urlParam career integer required ID career. Example: 1
+     */
     public function destroy(Career $career)
     {
         $career->delete();

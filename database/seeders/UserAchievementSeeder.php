@@ -9,14 +9,14 @@ class UserAchievementSeeder extends Seeder
 {
     public function run(): void
     {
-        $amanda = User::where('email', 'amanda@mail.com')->first();
+        $budi = User::where('email', 'budi@gmail.com')->first();
 
-        $amanda->achievements()->create([
+        $budi->achievements()->create([
             'achievement_code' => 'first_assessment',
             'earned_at' => '2026-08-01 10:00:00',
         ]);
 
-        $amanda->achievements()->create([
+        $budi->achievements()->create([
             'achievement_code' => 'onboarding_complete',
             'earned_at' => '2026-07-25 09:00:00',
         ]);

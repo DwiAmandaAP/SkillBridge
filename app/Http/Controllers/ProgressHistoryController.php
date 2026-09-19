@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class ProgressHistoryController extends Controller
 {
+    /**
+     * GET Progress History
+     *
+     * Description: Mengambil riwayat skor readiness dan snapshot skill pengguna, diurutkan dari yang terbaru.
+      *
+      * @group User - Progress & Achievements
+      * @authenticated
+     */
     public function index(Request $request)
     {
         $history = ProgressHistory::where('user_id', $request->user()->id)

@@ -11,10 +11,10 @@ class RoadmapSeeder extends Seeder
 {
     public function run(): void
     {
-        $amanda = User::where('email', 'amanda@mail.com')->first();
+        $budi = User::where('email', 'budi@gmail.com')->first();
         $dataEngineer = Career::where('slug', 'data-engineer')->first();
 
-        $roadmap = $amanda->roadmap()->create([
+        $roadmap = $budi->roadmap()->create([
             'target_career_id' => $dataEngineer->id,
             'generated_at' => now()->subDays(10),
         ]);

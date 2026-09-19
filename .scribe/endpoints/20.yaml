@@ -1,0 +1,52 @@
+name: 'Admin - Settings'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: api/v1/admin/settings/industry-insight-mode
+    metadata:
+      custom: []
+      groupName: 'Admin - Settings'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'PATCH Update Industry Insight Mode'
+      description: |-
+        Description: Mengubah mode sumber industry insight antara otomatis dari pipeline scraping
+        dan manual dari input admin.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      mode:
+        custom: []
+        name: mode
+        description: 'Mode insight: auto atau manual.'
+        required: true
+        example: auto
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      mode: auto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    controller: null
+    method: null
+    route: null

@@ -11,6 +11,14 @@ class ScrapeRunController extends Controller
 {
     use ApiResponse;
 
+    /**
+     * GET Scrape Runs
+     *
+     * Description: Menampilkan riwayat proses scraping lowongan, diurutkan dari proses terbaru.
+      *
+      * @group Admin - Scrape Runs
+      * @authenticated
+     */
     public function index()
     {
         $runs = ScrapeRun::orderByDesc('started_at')->get([
@@ -25,8 +33,14 @@ class ScrapeRunController extends Controller
         return $this->success($runs);
     }
 
-    // Trigger manual untuk kebutuhan demo.
-    // Asumsi command `scrape:jobs` dibuat terpisah di modul Scraping & Data Pipeline.
+    /**
+     * POST Trigger Scraping
+     *
+     * Description: Membuat catatan proses scraping dan menjalankan command scraping lowongan.
+      *
+      * @group Admin - Scrape Runs
+      * @authenticated
+     */
     public function trigger()
     {
         $run = ScrapeRun::create([

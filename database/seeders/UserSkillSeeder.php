@@ -10,7 +10,7 @@ class UserSkillSeeder extends Seeder
 {
     public function run(): void
     {
-        $amanda = User::where('email', 'amanda@mail.com')->first();
+        $budi = User::where('email', 'budi@gmail.com')->first();
 
         $data = [
             'sql' => 85,
@@ -21,7 +21,7 @@ class UserSkillSeeder extends Seeder
         ];
 
         foreach ($data as $code => $level) {
-            $amanda->skills()->create([
+            $budi->skills()->create([
                 'skill_id' => Skill::where('code', $code)->value('id'),
                 'level' => $level,
                 'confidence' => min(100, $level + 10),
