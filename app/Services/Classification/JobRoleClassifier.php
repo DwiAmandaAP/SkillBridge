@@ -27,7 +27,8 @@ class JobRoleClassifier
             'data engineer', 'data engineering', 'etl developer',
         ],
         'Data Analytics' => [
-            'data analyst', 'data analytics', 'business intelligence',
+            'data analyst', 'data analytics', 'business intelligence', 'IT Business Analyst Legal',
+            'IT Odoo Business Analyst', 'it business enablement'
         ],
         'Data Science / AI' => [
             'data scientist', 'machine learning', 'ai engineer',
@@ -36,7 +37,8 @@ class JobRoleClassifier
         ],
         'DevOps / Infrastructure' => [
             'devops', 'site reliability', 'sre', 'cloud engineer',
-            'infrastructure engineer', 'platform engineer',
+            'infrastructure engineer', 'platform engineer', 'it infrastructure support',
+            'it infrastructure'
         ],
         'QA / Testing' => [
             'qa engineer', 'quality assurance', 'software tester',
@@ -45,6 +47,7 @@ class JobRoleClassifier
         'Cyber Security' => [
             'cyber security', 'cybersecurity', 'security engineer',
             'penetration test', 'security analyst', 'soc analyst',
+            'it security'
         ],
         'UI/UX Design' => [
             'ui/ux', 'ux designer', 'ui designer', 'product designer',
@@ -52,10 +55,14 @@ class JobRoleClassifier
         ],
         'IT Support' => [
             'it support', 'helpdesk', 'technical support', 'desktop support',
+            'it staff', 'it specialist', 'it monitoring', 'it operations', 
+            'it governance, risk, & compliance expert', 'it', 'it operational',
+            'it intern', 'it operasional'
         ],
         'Network / System Admin' => [
             'network engineer', 'system administrator', 'sysadmin',
-            'network administrator',
+            'network administrator', 'IT Infrastructure & Network Strategy',
+            'it network'
         ],
         'Project / Product Management' => [
             'project manager', 'product manager', 'scrum master',
