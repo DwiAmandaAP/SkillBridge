@@ -99,4 +99,19 @@ class JobRoleClassifier
     {
         return array_keys($this->roleKeywords);
     }
+
+    public function roleSlug(string $role): string
+    {
+        return \Illuminate\Support\Str::slug($role); // "Data Science / AI" -> "data-science-ai"
+    }
+
+    public function slugToRole(string $slug): ?string
+    {
+        foreach ($this->knownRoles() as $role) {
+            if ($this->roleSlug($role) === $slug) {
+                return $role;
+            }
+        }
+        return null;
+    }
 }

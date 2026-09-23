@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RoleDemandHistory;
 use App\Services\Location\LocationNormalizer;
+use App\Services\Classification\JobRoleClassifier;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,7 @@ class RoleInsightController extends Controller
             ->get()
             ->map(fn ($row) => [
                 'role' => $row->role,
+                'slug' => app(JobRoleClassifier::class)->roleSlug($row->role),
                 'job_count' => $row->job_count,
                 'total_jobs' => $row->total_jobs,
                 'percentage' => $row->percentage,
@@ -65,25 +67,35 @@ class RoleInsightController extends Controller
         * @urlParam role string required Nama role yang ingin dilihat trennya. Example: Frontend Developer
         * @queryParam region string Nama provinsi atau kota yang ingin difilter. Example: Jawa Timur
      */
-    public function trend(Request $request, string $role, LocationNormalizer $normalizer)
-    {
-        $rawRegion = $request->query('region');
-        $region = $rawRegion ? $normalizer->normalize($rawRegion) : null;
+    public function trend(Request $request, string $roleSlug, LocationNormalizer $normalizer, JobRoleClassifier $classifier)
+{
+    $role = $classifier->slugToRole($roleSlug);
 
-        if ($rawRegion && ! $region) {
-            return $this->success([], "Region '{$rawRegion}' tidak dikenali");
-        }
-
-        $history = RoleDemandHistory::where('role', $role)
-            ->where('region', $region)
-            ->orderBy('recorded_at')
-            ->get(['period', 'job_count', 'percentage'])
-            ->map(fn ($row) => [
-                'month' => $row->period,
-                'job_count' => $row->job_count,
-                'percentage' => $row->percentage,
-            ]);
-
-        return $this->success($history);
+    if (! $role) {
+        return $this->error('Role tidak ditemukan', 404);
     }
+
+    $rawRegion = $request->query('region');
+    $region = $rawRegion ? $normalizer->normalize($rawRegion) : null;
+
+    if ($rawRegion && ! $region) {
+        return $this->success([], "Region '{$rawRegion}' tidak dikenali");
+    }
+
+    $history = RoleDemandHistory::where('role', $role)
+        ->where('region', $region)
+        ->orderBy('recorded_at')
+        ->get(['period', 'job_count', 'percentage'])
+        ->map(fn ($row) => [
+            'month' => $row->period,
+            'job_count' => $row->job_count,
+            'percentage' => $row->percentage,
+        ]);
+
+    return $this->success([
+        'role' => $role,
+        'slug' => $roleSlug,
+        'history' => $history,
+    ]);
+}
 }

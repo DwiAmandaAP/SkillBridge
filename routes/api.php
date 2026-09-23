@@ -105,7 +105,7 @@ Route::prefix('internal')
     Route::get('industry-insights/{skill_id}/trend', [IndustryInsightController::class, 'trend']);
         
     Route::get('role-insights', [RoleInsightController::class, 'index']);
-    Route::get('role-insights/{role}/trend', [RoleInsightController::class, 'trend']);
+    Route::get('role-insights/{roleSlug}/trend', [RoleInsightController::class, 'trend']);
 });
 
 
